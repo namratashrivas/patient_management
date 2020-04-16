@@ -458,7 +458,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                  
                   <div class="form-group">
                     <label for="discharge date">DISCHARGE DATE</label>
-                    <input type="date" name="discharge_date " class="form-control " id="discharge_date" placeholder="Enter  Discharge Date " >
+                    <input type="date" name="discharge_date" class="form-control " id="discharge_date" placeholder="Enter  Discharge Date " >
                   <span id="VITAMINE_C-error" class="error invalid-feedback"></span></div>
                  
                   <div class="form-group">

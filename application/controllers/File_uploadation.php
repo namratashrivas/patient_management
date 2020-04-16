@@ -52,7 +52,7 @@ $death=$this->input->post_get("death");
             "DISCHARGE_DATE"=>$discharge_date,
             "PATIENT_DEATH"=>$death,
             "Patient_image"=>$Patient_imageDetails,
-            "Patent's_files"=>$Patient_fileDetails
+            "Patents_files"=>$Patient_fileDetails
         );
 //   
         $result=$this->File_modal->add_files($data);
