@@ -440,12 +440,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="row">
                 
                 <div class="card-body">
-                    <form role="form" id="other_details"  name="other_details"novalidate="novalidate">
+                    <form role="form" id="other_details"  name="other_details" novalidate="novalidate">
                   <div class="form-group">
                     <label for="Remarks">Remarks</label>
                     <input type="text" name="remarks" class="form-control " id="remarks" 
                            placeholder="Enter Remarks"  >
                   <span id="remarks-error" class="error invalid-feedback"></span></div>
+                  <div class="form-group">
+                    <label for="Ward">Ward</label>
+                    <input type="text" name="ward" class="form-control " id="ward" 
+                           placeholder="Enter Remarks"  >
+                  <span id="ward-error" class="error invalid-feedback"></span></div>
                   <div class="form-group">
                     <label for="recovered">Recovered </label>
                     <input type="text" name="recovered" class="form-control " id="recovered" placeholder="Enter Recovered " >
@@ -578,14 +583,69 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script src="<?php echo base_url() . "dist/"; ?>js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url() . "dist/"; ?>js/demo.js"></script>
-<script src="https://adminlte.io/themes/AdminLTE/dist/js/demo.js"></script>
-
+<script src="<?= base_url() ?>dist/js/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+<link href="<?= base_url() ?>dist/js/toastr/toastr.css" rel="stylesheet" type="text/css"/>
+        <script src="<?= base_url() ?>dist/js/toastr/toastr.min.js" type="text/javascript"></script>
 <script>
 
 function ShowHideDiv(chksymptons) {
         var dvPassport = document.getElementById("dvPassport");
         dvPassport.style.display = chkPassport.checked ? "block" : "none";
     }
+
+    $("#other_details").validate({
+        rules: {
+            remarks: {required: true},
+            ward: {required: true},
+            recovered: {required: true},
+            discharge_date: {required: true},
+            death: {required: true},
+            Patient_image: {required: true},
+            Patient_file: {required: true}
+        },
+        messages: {           
+            remarks: {required: "Feild cannot be empty"},
+            ward: {required: "Feild cannot be empty"},
+            recovered: {required: "Feild cannot be empty"},
+            discharge_date: {required: "Feild cannot be empty"},
+            death: {required: "Feild cannot be empty"},
+            Patient_image: {required: "Please Select File"},
+            Patient_file: {required: "Please Select File"}
+        },
+        errorElement: 'span',
+        submitHandler: function (form) {
+            var form_data = document.getElementById('other_details');
+            console.log(form_data);
+            $.ajax({
+                type: "POST",
+                url: "<?= base_url("upload_files") ?>",
+                data: new FormData(form_data),
+                contentType: false,
+                cache: false,
+                processData: false,
+                async: false,
+                cache: false,
+                success: function (success) {
+                    success = JSON.parse(success);
+                    if (success.status === true) {
+
+                        toastr.success(success.body);
+//                                              $('#file_uploading').hide();
+                       
+                        $("#other_details").trigger("reset");
+                    } else {
+
+                        toastr.error(success.body);
+                    }
+                },
+                error: function (error) {
+
+                    toastr.error("something went to wrong");
+
+                }
+            });
+        }
+    });
 </script>
 </body>
 </html>
