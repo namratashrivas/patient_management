@@ -508,30 +508,133 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <div class="card-body">
                                         <div class="tab-content" id="custom-tabs-one-tabContent">
                                             <div class="tab-pane fade active show" id="custom-tabs-one-home" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
-                                                <div class="row">
-                                                    <label class="col-md-3">Name</label>  
-                                                    <label class="col-md-6">Bhavana</label></div>
-                                                <label class="col-md-3">Age</label>  <label class="col-md-6">95</label>
-                                                <label class="col-md-3">Gender</label>  <label class="col-md-6">Female</label>
-                                                <label class="col-md-3">District</label>  <label class="col-md-6">Thane</label>
-                                                <label class="col-md-3">Address</label>  <label class="col-md-6">ABC-103 haunted house road 101 green vally</label>
-                                                <label class="col-md-3">Contact Number</label>  <label class="col-md-6">9920626758</label>
-
-                                            </div>
+                                              <div class="table-responsive" >
+                                                    <form>
+                                                        <div id="travel_details" >
+                                                            <table class="table table-bordered">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Name</th>
+                                                                        <th>Age</th>
+                                                                        <th>Gender</th>
+                                                                        <th>District</th>
+                                                                        <th>Address</th>
+                                                                        <th>Contact Number</th>
+                                                                        
+                                                                    </tr>
+                                                                </thead>
+                                                            </table>
+                                                        </div>
+                                                        
+                                                    </form>
+                                              </div>
+                                           </div>
                                             <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
-                                                Mauris tincidunt mi at erat gravida, eget tristique urna bibendum. Mauris pharetra purus ut ligula tempor, et vulputate metus facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas sollicitudin, nisi a luctus interdum, nisl ligula placerat mi, quis posuere purus ligula eu lectus. Donec nunc tellus, elementum sit amet ultricies at, posuere nec nunc. Nunc euismod pellentesque diam. 
+                                                <div class="table-responsive" >
+                                                    <form>
+                                                        <div id="travel_details" >
+                                                            <table class="table table-bordered">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Visited</th>
+                                                                        <th>Country of Visit</th>
+                                                                        <th>Date of arrival from Affected Country</th>
+                                                                        <th>Date of contact with person arrived from abroad</th>
+                                                                        <th>Unknown contact with person traveled from abroad</th>
+                                                                        <th>Contact with covid positive patients </th>
+                                                                        <th>Doctors visited</th>
+                                                                        <th>DATE tested for SARS COV-2 ( RTPCR) </th>
+                                                                    </tr>
+                                                                </thead>
+                                                            </table>
+                                                        </div>
+                                                        
+                                                    </form>
+                                              </div>
                                             </div>
                                             <div class="tab-pane fade" id="custom-tabs-one-messages" role="tabpanel" aria-labelledby="custom-tabs-one-messages-tab">
-                                                Morbi turpis dolor, vulputate vitae felis non, tincidunt congue mauris. Phasellus volutpat augue id mi placerat mollis. Vivamus faucibus eu massa eget condimentum. Fusce nec hendrerit sem, ac tristique nulla. Integer vestibulum orci odio. Cras nec augue ipsum. Suspendisse ut velit condimentum, mattis urna a, malesuada nunc. Curabitur eleifend facilisis velit finibus tristique. Nam vulputate, eros non luctus efficitur, ipsum odio volutpat massa, sit amet sollicitudin est libero sed ipsum. Nulla lacinia, ex vitae gravida fermentum, lectus ipsum gravida arcu, id fermentum metus arcu vel metus. Curabitur eget sem eu risus tincidunt eleifend ac ornare magna. 
+                                                 <div class="table-responsive" >
+                                                    <form>
+                                                        <div id="testing_details" >
+                                                            <table class="table table-bordered">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Rapid Testing</th>
+                                                                        <th>CBC</th>
+                                                                        <th>CHEST X-RAY</th>
+                                                                        <th>CT- SCAN</th>
+                                                                    <th>ECGs </th>
+                                                                    </tr>
+                                                                </thead>
+                                                            </table>
+                                                        </div>
+                                                        
+                                                    </form>
+                                              </div>
                                             </div>
                                             <div class="tab-pane fade" id="custom-tabs-one-settings" role="tabpanel" aria-labelledby="custom-tabs-one-settings-tab">
-                                                Pellentesque vestibulum commodo nibh nec blandit. Maecenas neque magna, iaculis tempus turpis ac, ornare sodales tellus. Mauris eget blandit dolor. Quisque tincidunt venenatis vulputate. Morbi euismod molestie tristique. Vestibulum consectetur dolor a vestibulum pharetra. Donec interdum placerat urna nec pharetra. Etiam eget dapibus orci, eget aliquet urna. Nunc at consequat diam. Nunc et felis ut nisl commodo dignissim. In hac habitasse platea dictumst. Praesent imperdiet accumsan ex sit amet facilisis. 
+                                                <div class="table-responsive" >
+                                                    <form>
+                                                        <div id="SYMPTOMS_details" >
+                                                            <table class="table table-bordered">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>SYMPTOMS</th>
+                                                                        <th>Date of starting of symptoms</th>
+                                                                        <th>Hospital Where Admitted / home quatrentine</th>
+                                                                        <th>Date of sample collection (second)</th>
+                                                                        <th>Result of sample (second)</th>
+                                                                    <th>Current health status</th>
+                                                                    </tr>
+                                                                </thead>
+                                                            </table>
+                                                        </div>
+                                                        
+                                                    </form>
+                                              </div>
                                             </div>
                                             <div class="tab-pane fade" id="custom-tabs-one-Treatment" role="tabpanel" aria-labelledby="custom-tabs-one-settings-tab">
-                                                Treatment vestibulum commodo nibh nec blandit. Maecenas neque magna, iaculis tempus turpis ac, ornare sodales tellus. Mauris eget blandit dolor. Quisque tincidunt venenatis vulputate. Morbi euismod molestie tristique. Vestibulum consectetur dolor a vestibulum pharetra. Donec interdum placerat urna nec pharetra. Etiam eget dapibus orci, eget aliquet urna. Nunc at consequat diam. Nunc et felis ut nisl commodo dignissim. In hac habitasse platea dictumst. Praesent imperdiet accumsan ex sit amet facilisis. 
+                                                <div class="table-responsive" >
+                                                    <form>
+                                                        <div id="treatment_details" >
+                                                            <table class="table table-bordered">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>HCQS</th>
+                                                                        <th>AZYTHROMYCINE</th>
+                                                                        <th>VITAMINE C</th>
+                                                                        <th>RETRO VIRAL</th>
+                                                                    <th>OTHERS</th>
+                                                                    </tr>
+                                                                </thead>
+                                                            </table>
+                                                        </div>
+                                                        
+                                                    </form>
+                                              </div>
                                             </div>
                                             <div class="tab-pane fade" id="custom-tabs-one-OTHERSDETAILS" role="tabpanel" aria-labelledby="custom-tabs-one-settings-tab">
-                                                OTHERSDETAILS vestibulum commodo nibh nec blandit. Maecenas neque magna, iaculis tempus turpis ac, ornare sodales tellus. Mauris eget blandit dolor. Quisque tincidunt venenatis vulputate. Morbi euismod molestie tristique. Vestibulum consectetur dolor a vestibulum pharetra. Donec interdum placerat urna nec pharetra. Etiam eget dapibus orci, eget aliquet urna. Nunc at consequat diam. Nunc et felis ut nisl commodo dignissim. In hac habitasse platea dictumst. Praesent imperdiet accumsan ex sit amet facilisis. 
+                                            <div class="table-responsive" >
+                                                    <form>
+                                                        <div id="others_details" >
+                                                            <table class="table table-bordered">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Remarks</th>
+                                                                        <th>Ward</th>
+                                                                        <th>Recovered</th>
+                                                                        <th>DISCHARGE DATE</th>
+                                                                    <th>PATIENT DEATH</th>
+                                                                    <th>Patient image</th>
+                                                                    <th>Patient file</th>
+                                                                    </tr>
+                                                                </thead>
+                                                            </table>
+                                                        </div>
+                                                        
+                                                    </form>
+                                              </div>
+                                            
                                             </div>
                                         </div>
                                     </div>
