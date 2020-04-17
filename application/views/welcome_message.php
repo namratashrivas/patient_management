@@ -817,7 +817,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             }
                         },
                         error: function (error) {
-                            alert("Something went to wrong");
+                            toastr.error("something went to wrong");
                             //                                                        
                         }
 
