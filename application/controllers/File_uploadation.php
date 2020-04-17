@@ -88,6 +88,29 @@ $death=$this->input->post_get("death");
                 }
                         echo json_encode($response);
     }
+    public function get_patient() {
+        
+        $get_patient = $this->File_modal->get_all_patient();
+ $data = "";
+        if ($get_patient != NULL) {
+           
+            foreach ($get_patient as $row) {
+                $data .= '<option value=' . $row->Patient_ID . '>' . $row->Name . '</option>';
+            }
+
+            $response['options'] = $data;
+            $response['message'] = 'success';
+            $response['code'] = 200;
+            $response['status'] = true;
+        } else {
+            $data = "<option selected disabled>No Data</option>";
+            $response['options'] = $data;
+            $response['result'] = '';
+            $response['message'] = 'No data to display';
+            $response['code'] = 204;
+            $response['status'] = false;
+        }echo json_encode($response);
+    }
                 
         
         

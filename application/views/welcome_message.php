@@ -95,7 +95,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                     </div>
                                                     <div class="form-group">
                                                         <label> Select Gender</label>
-                                                        <select class="custom-select" id="sex" name="sex">
+                                                        <select class="form-control" id="sex" name="sex">
                                                             <option>Select Gender</option>
                                                             <option value="Male">Male</option>
                                                             <option value="Female">Female</option>
@@ -156,6 +156,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <div class="card-body">
                                                 <form role="form" id="TRAVEL" name="TRAVEL" novalidate="novalidate">
                                                     <div class="form-group">
+                                                      <label>Select Patient</label>
+                                                      <select  id="travel_pat_id" name="travel_pat_id" class=" form-control "></select>
+                                                    </div>   
+                                                    <div class="form-group">
                                                         <label for="Visited">Visited</label>
                                                         <input type="text" name="visited" class="form-control " id="visited" 
                                                                placeholder="Enter Visited Place"  >
@@ -185,7 +189,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                     </div>
                                                     <div class="form-group">
                                                         <label> Contact with covid positive patients</label>
-                                                        <select class="custom-select" id="positive_patients" name="positive_patients">
+                                                        <select class="form-control" id="positive_patients" name="positive_patients">
                                                             <option value="In locality">In family</option>
                                                             <option value="In locality">In locality</option>                          
                                                         </select>
@@ -197,7 +201,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                     </div>
                                                     <div class="form-group">
                                                         <label> DATE tested for SARS COV-2 ( RTPCR)</label>
-                                                        <select class="custom-select" id="tested_cov" name="tested_cov">
+                                                        <select class="form-control" id="tested_cov" name="tested_cov">
                                                             <option value="Positive">Positive</option>
                                                             <option value="Negative">Negative</option>                          
                                                         </select>
@@ -677,7 +681,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <link href="<?= base_url() ?>dist/js/toastr/toastr.css" rel="stylesheet" type="text/css"/>
         <script src="<?= base_url() ?>dist/js/toastr/toastr.min.js" type="text/javascript"></script>
         <script>
+$(document).ready(function () {
 
+     
+        $.ajax({
+            type: "POST",
+            url: "<?= base_url("get_patient") ?>",
+            dataType: "json",
+            async: false,
+            cache: false,
+            success: function (result) {
+                var data = result.options;
+                console.log(data);
+                if (result !== '') {
+                    $('#travel_pat_id').html(data);
+                } else {
+                    $('#travel_pat_id').html("");
+                }
+            },
+        });
+
+    });
             function ShowHideDiv(chksymptons) {
                 var dvPassport = document.getElementById("dvPassport");
                 dvPassport.style.display = chkPassport.checked ? "block" : "none";

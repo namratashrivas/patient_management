@@ -99,6 +99,17 @@ class File_modal extends CI_Model {
         }
     }
 
+    public function get_all_patient() { //function to get all patient id wise
+        $query = $this->db->query("SELECT * FROM `user_profile`");
+//        echo $this->db->last_query();
+        if ($query->num_rows() > 0) {
+            $result = $query->result();
+            return $result;
+        } else {
+            return FALSE;
+        }
+    }
+
 
 }
 ?>
