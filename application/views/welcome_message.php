@@ -767,7 +767,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  rapid_testing:{required:"Feild cannot be empty"},
  cbc:{required:"Feild cannot be empty"},
  xray:{required:"Feild cannot be empty"},
- ct_Scan:{required:"Feild cannot be empty"},
+ ct_scan:{required:"Feild cannot be empty"},
  ECG:{required:"Feild cannot be empty"}
  
  },errorElement:"span",

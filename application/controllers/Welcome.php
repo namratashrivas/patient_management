@@ -67,15 +67,15 @@ class Welcome extends CI_Controller {
             $rapid_testing = $this->input->post('rapid_testing');
             $cbc = $this->input->post('cbc');
             $xray = $this->input->post('xray');
-            $ct_Scan = $this->input->post('ct_Scan');
+            $ct_scan = $this->input->post('ct_scan');
             $ECG = $this->input->post('ECG');
             
              $testing_data=array(
-                 "testing_report" =>$rapid_testing,
-                  "testing_report"=>$cbc,
-                  "testing_report"=>$xray,
-                  "testing_report"=>$ct_Scan,
-                  "testing_report"=>$ECG
+                 "Rapid_Testing" =>$rapid_testing,
+                  "CBC"=>$cbc,
+                  "CHESTX-RAY"=>$xray,
+                  "CTSCAN"=>$ct_scan,
+                  "ECG"=>$ECG
              );
              
              
