@@ -243,6 +243,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <div class="card-body">
                                                 <form role="form" id="testing"  name="testing"novalidate="novalidate">
                                                     <div class="form-group">
+                                                      <label>Select Patient</label>
+                                                      <select  id="testing_pat_id" name="testing_pat_id" class=" form-control "></select>
+                                                    </div> 
+                                                    <div class="form-group">
                                                         <label for="Rapid Testing">Rapid Testing</label>
                                                         <input type="text" name="rapid_testing" class="form-control " id="rapid_testing" 
                                                                placeholder="Enter Rapid Testing"  >
@@ -299,6 +303,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                                             <div class="card-body">
                                                 <form role="form" id="SYMPTOMS"  name="SYMPTOMS"novalidate="novalidate">
+                                                     <div class="form-group">
+                                                      <label>Select Patient</label>
+                                                      <select  id="symptoms_pat_id" name="symptoms_pat_id" class=" form-control "></select>
+                                                    </div> 
                                                     <div class="form-group">
                                                         <label for=" symptoms ">SYMPTOMS </label>
                                                         <div class="custom-control custom-radio col-md-2">
@@ -377,6 +385,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                                             <div class="card-body">
                                                 <form role="form" id="treatment"  name="treatment" novalidate="novalidate">
+                                                    
+                                                     <div class="form-group">
+                                                      <label>Select Patient</label>
+                                                      <select  id="treatment_pat_id" name="treatment_pat_id" class=" form-control "></select>
+                                                    </div> 
                                                     <div class="form-group">
                                                         <label for="HCQS">HCQS</label>
                                                         <input type="text" name="HCQS" class="form-control" id="HCQS"placeholder="EnterHCQS"  >
@@ -434,6 +447,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                                             <div class="card-body">
                                                 <form role="form" id="other_details"  name="other_details" novalidate="novalidate">
+
+                                                    
+                                                     <div class="form-group">
+                                                      <label>Select Patient</label>
+                                                      <select  id="treatment_pat_id" name="treatment_pat_id" class=" form-control "></select>
+                                                    </div> 
                                                     <div class="form-group">
                                                         <label for="Remarks">Remarks</label>
                                                         <input type="text" name="remarks" class="form-control " id="remarks" 
@@ -695,8 +714,14 @@ $(document).ready(function () {
                 console.log(data);
                 if (result !== '') {
                     $('#travel_pat_id').html(data);
+                    $('#testing_pat_id').html(data);
+                    $('#symptoms_pat_id').html(data);
+                    $('#treatment_pat_id').html(data);
                 } else {
                     $('#travel_pat_id').html("");
+                    $('#testing_pat_id').html("");
+                    $('#symptoms_pat_id').html("");
+                    $('#treatment_pat_id').html("");
                 }
             },
         });
