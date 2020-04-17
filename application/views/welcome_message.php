@@ -156,8 +156,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <div class="card-body">
                                                 <form role="form" id="TRAVEL" name="TRAVEL" novalidate="novalidate">
                                                     <div class="form-group">
-                                                      <label>Select Patient</label>
-                                                      <select  id="travel_pat_id" name="travel_pat_id" class=" form-control "></select>
+                                                        <label>Select Patient</label>
+                                                        <select  id="travel_pat_id" name="travel_pat_id" class=" form-control "></select>
                                                     </div>   
                                                     <div class="form-group">
                                                         <label for="Visited">Visited</label>
@@ -243,8 +243,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <div class="card-body">
                                                 <form role="form" id="testing"  name="testing"novalidate="novalidate">
                                                     <div class="form-group">
-                                                      <label>Select Patient</label>
-                                                      <select  id="testing_pat_id" name="testing_pat_id" class=" form-control "></select>
+                                                        <label>Select Patient</label>
+                                                        <select  id="testing_pat_id" name="testing_pat_id" class=" form-control "></select>
                                                     </div> 
                                                     <div class="form-group">
                                                         <label for="Rapid Testing">Rapid Testing</label>
@@ -294,7 +294,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                                         <div class="card-tools">
                                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                                <i class="fas fa-plus"></i>
+                                                <i class="fas fa-plus"></i></button>
                                         </div>
                                     </div>
                                     <!-- /.card-header -->
@@ -303,28 +303,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                                             <div class="card-body">
                                                 <form role="form" id="SYMPTOMS"  name="SYMPTOMS"novalidate="novalidate">
-                                                     <div class="form-group">
-                                                      <label>Select Patient</label>
-                                                      <select  id="symptoms_pat_id" name="symptoms_pat_id" class=" form-control "></select>
+                                                    <div class="form-group">
+                                                        <label>Select Patient</label>
+                                                        
+                                                        <select  id="symptoms_pat_id" name="symptoms_pat_id" class=" form-control "></select>
                                                     </div> 
                                                     <div class="form-group">
-                                                        <label for=" symptoms ">SYMPTOMS </label>
-                                                        <div class="custom-control custom-radio col-md-2">
-                                                            <input class="custom-control-input" type="radio" id="customRadio1" name="customRadio">
-                                                            <label for="customRadio1" class="custom-control-label">yes</label>
-                                                        </div>
-                                                        <div class="custom-control custom-radio col-md-2">
-                                                            <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" >
-                                                            <label for="customRadio2" class="custom-control-label">No</label>
-                                                        </div>
-                                                        <div id="symps" style="display: ">
-                                                            <div class="custom-control custom-radio col-md-6">
-                                                                <input class="" type="checkbox" id="COUGH" name="COUGH"><label>COUGH</label>
+                                                        <label for=" symptoms ">Symptoms </label>
 
-                                                                <input class="" type="checkbox" id="FEVER" name="FEVER"><label>FEVER</label>
-                                                                <input class="" type="checkbox" id="LOSS_OF_SMELL" name="LOSS_OF_SMELL"><label>LOSS OF SMELL</label>
-                                                                <input class="" type="checkbox" id="DIARRHOES" name="DIARRHOES"><label>DIARRHOES</label>
-                                                                <input class="" type="Checkbox" id="LOSS_OF_TASTE" name="LOSS_OF_TASTE"><label>LOSS OF TASTE</label>
+                                                        <div class="custom-control custom-radio col-md-2">
+                                                            <input type="radio" id="yes" name="yes" value="yes">
+                                                            <label for="male">Yes</label>
+                                                            <input type="radio" id="no" name="yes" value="no" checked="">
+                                                            <label for="female">No</label> 
+
+                                                        </div>
+                                                        <div class="custom-control custom-radio col-md-2">
+
+                                                        </div>
+                                                        <div id="myDIV" style="display:none; ">
+                                                            <div class="custom-control custom-radio col-md-6">
+                                                                <input class="" type="checkbox" id="COUGH" name="sys[]" value="COUGH"><label>COUGH</label>
+                                                                <input class="" type="checkbox" id="FEVER" name="sys[]" value="FEVER"><label>FEVER</label>
+                                                                <input class="" type="checkbox" id="LOSS_OF_SMELL"name="sys[]" value="LOSS_OF_SMELL"><label>LOSS OF SMELL</label>
+                                                                <input class="" type="checkbox" id="DIARRHOES" name="sys[]" value="DIARRHOES"><label>DIARRHOES</label>
+                                                                <input class="" type="Checkbox" id="LOSS_OF_TASTE"  name="sys[]" value="LOSS_OF_TASTE"><label>LOSS OF TASTE</label>
                                                             </div>
                                                         </div>  
                                                     </div>
@@ -385,10 +388,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                                             <div class="card-body">
                                                 <form role="form" id="treatment"  name="treatment" novalidate="novalidate">
-                                                    
-                                                     <div class="form-group">
-                                                      <label>Select Patient</label>
-                                                      <select  id="treatment_pat_id" name="treatment_pat_id" class=" form-control "></select>
+
+                                                    <div class="form-group">
+                                                        <label>Select Patient</label>
+                                                        <select  id="treatment_pat_id" name="treatment_pat_id" class=" form-control "></select>
                                                     </div> 
                                                     <div class="form-group">
                                                         <label for="HCQS">HCQS</label>
@@ -438,7 +441,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                                 <i class="fas fa-plus"></i>
                                             </button>
-                                            
+
                                         </div>
                                     </div>
                                     <!-- /.card-header -->
@@ -448,10 +451,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <div class="card-body">
                                                 <form role="form" id="other_details"  name="other_details" novalidate="novalidate">
 
-                                                    
-                                                     <div class="form-group">
-                                                      <label>Select Patient</label>
-                                                      <select  id="treatment_pat_id" name="treatment_pat_id" class=" form-control "></select>
+
+                                                    <div class="form-group">
+                                                        <label>Select Patient</label>
+                                                        <select  id="other_pat_id" name="other_pat_id" class=" form-control "></select>
                                                     </div> 
                                                     <div class="form-group">
                                                         <label for="Remarks">Remarks</label>
@@ -531,7 +534,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <div class="card-body">
                                         <div class="tab-content" id="custom-tabs-one-tabContent">
                                             <div class="tab-pane fade active show" id="custom-tabs-one-home" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
-                                              <div class="table-responsive" >
+                                                <div class="table-responsive" >
                                                     <form>
                                                         <div id="travel_details" >
                                                             <table class="table table-bordered">
@@ -543,15 +546,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                                         <th>District</th>
                                                                         <th>Address</th>
                                                                         <th>Contact Number</th>
-                                                                        
+
                                                                     </tr>
                                                                 </thead>
                                                             </table>
                                                         </div>
-                                                        
+
                                                     </form>
-                                              </div>
-                                           </div>
+                                                </div>
+                                            </div>
                                             <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
                                                 <div class="table-responsive" >
                                                     <form>
@@ -571,12 +574,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                                 </thead>
                                                             </table>
                                                         </div>
-                                                        
+
                                                     </form>
-                                              </div>
+                                                </div>
                                             </div>
                                             <div class="tab-pane fade" id="custom-tabs-one-messages" role="tabpanel" aria-labelledby="custom-tabs-one-messages-tab">
-                                                 <div class="table-responsive" >
+                                                <div class="table-responsive" >
                                                     <form>
                                                         <div id="testing_details" >
                                                             <table class="table table-bordered">
@@ -586,14 +589,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                                         <th>CBC</th>
                                                                         <th>CHEST X-RAY</th>
                                                                         <th>CT- SCAN</th>
-                                                                    <th>ECGs </th>
+                                                                        <th>ECGs </th>
                                                                     </tr>
                                                                 </thead>
                                                             </table>
                                                         </div>
-                                                        
+
                                                     </form>
-                                              </div>
+                                                </div>
                                             </div>
                                             <div class="tab-pane fade" id="custom-tabs-one-settings" role="tabpanel" aria-labelledby="custom-tabs-one-settings-tab">
                                                 <div class="table-responsive" >
@@ -607,14 +610,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                                         <th>Hospital Where Admitted / home quatrentine</th>
                                                                         <th>Date of sample collection (second)</th>
                                                                         <th>Result of sample (second)</th>
-                                                                    <th>Current health status</th>
+                                                                        <th>Current health status</th>
                                                                     </tr>
                                                                 </thead>
                                                             </table>
                                                         </div>
-                                                        
+
                                                     </form>
-                                              </div>
+                                                </div>
                                             </div>
                                             <div class="tab-pane fade" id="custom-tabs-one-Treatment" role="tabpanel" aria-labelledby="custom-tabs-one-settings-tab">
                                                 <div class="table-responsive" >
@@ -627,17 +630,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                                         <th>AZYTHROMYCINE</th>
                                                                         <th>VITAMINE C</th>
                                                                         <th>RETRO VIRAL</th>
-                                                                    <th>OTHERS</th>
+                                                                        <th>OTHERS</th>
                                                                     </tr>
                                                                 </thead>
                                                             </table>
                                                         </div>
-                                                        
+
                                                     </form>
-                                              </div>
+                                                </div>
                                             </div>
                                             <div class="tab-pane fade" id="custom-tabs-one-OTHERSDETAILS" role="tabpanel" aria-labelledby="custom-tabs-one-settings-tab">
-                                            <div class="table-responsive" >
+                                                <div class="table-responsive" >
                                                     <form>
                                                         <div id="others_details" >
                                                             <table class="table table-bordered">
@@ -647,17 +650,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                                         <th>Ward</th>
                                                                         <th>Recovered</th>
                                                                         <th>DISCHARGE DATE</th>
-                                                                    <th>PATIENT DEATH</th>
-                                                                    <th>Patient image</th>
-                                                                    <th>Patient file</th>
+                                                                        <th>PATIENT DEATH</th>
+                                                                        <th>Patient image</th>
+                                                                        <th>Patient file</th>
                                                                     </tr>
                                                                 </thead>
                                                             </table>
                                                         </div>
-                                                        
+
                                                     </form>
-                                              </div>
-                                            
+                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -700,37 +703,41 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <link href="<?= base_url() ?>dist/js/toastr/toastr.css" rel="stylesheet" type="text/css"/>
         <script src="<?= base_url() ?>dist/js/toastr/toastr.min.js" type="text/javascript"></script>
         <script>
-$(document).ready(function () {
+            $(document).ready(function () {
 
-     
-        $.ajax({
-            type: "POST",
-            url: "<?= base_url("get_patient") ?>",
-            dataType: "json",
-            async: false,
-            cache: false,
-            success: function (result) {
-                var data = result.options;
-                console.log(data);
-                if (result !== '') {
-                    $('#travel_pat_id').html(data);
-                    $('#testing_pat_id').html(data);
-                    $('#symptoms_pat_id').html(data);
-                    $('#treatment_pat_id').html(data);
-                } else {
-                    $('#travel_pat_id').html("");
-                    $('#testing_pat_id').html("");
-                    $('#symptoms_pat_id').html("");
-                    $('#treatment_pat_id').html("");
-                }
-            },
-        });
 
-    });
-            function ShowHideDiv(chksymptons) {
-                var dvPassport = document.getElementById("dvPassport");
-                dvPassport.style.display = chkPassport.checked ? "block" : "none";
-            }
+                $('input[type="radio"]').click(function () {
+                    if ($(this).attr('id') == 'yes') {
+                        $('#myDIV').show();
+                    } else {
+                        $('#myDIV').hide();
+                    }
+                });
+                $.ajax({
+                    type: "POST",
+                    url: "<?= base_url("get_patient") ?>",
+                    dataType: "json",
+                    async: false,
+                    cache: false,
+                    success: function (result) {
+                        var data = result.options;
+                        console.log(data);
+                        if (result !== '') {
+                            $('#travel_pat_id').html(data);
+                            $('#testing_pat_id').html(data);
+                            $('#symptoms_pat_id').html(data);
+                            $('#treatment_pat_id').html(data);
+                        } else {
+                            $('#travel_pat_id').html("");
+                            $('#testing_pat_id').html("");
+                            $('#symptoms_pat_id').html("");
+                            $('#treatment_pat_id').html("");
+                        }
+                    },
+                });
+
+            });
+           
 
             $("#other_details").validate({
                 rules: {
@@ -861,6 +868,7 @@ $(document).ready(function () {
                             success = JSON.parse(success);
                             if (success.status === true) {
                                 toastr.success(success.body);
+                                 location.reload();
                             } else {
                                 toastr.success(success.body);
                             }
@@ -918,29 +926,29 @@ $(document).ready(function () {
                             }
                         },
                         error: function (error) {
-                            alert("Something went to wrong");
+                            toastr.error("something went to wrong");
                         }
 
                     });
                 }
             });
- //Testing
- $("#testing").validate({
- rules:{rapid_testing:{required:true},
- cbc:{required:true},
- xray:{required:true},
- ct_scan:{required:true},
- ECG:{required:true}
- },
- messages:{
- rapid_testing:{required:"Feild cannot be empty"},
- cbc:{required:"Feild cannot be empty"},
- xray:{required:"Feild cannot be empty"},
- ct_scan:{required:"Feild cannot be empty"},
- ECG:{required:"Feild cannot be empty"}
- 
- },errorElement:"span",
-submitHandler: function (form) {
+            //Testing
+            $("#testing").validate({
+                rules: {rapid_testing: {required: true},
+                    cbc: {required: true},
+                    xray: {required: true},
+                    ct_scan: {required: true},
+                    ECG: {required: true}
+                },
+                messages: {
+                    rapid_testing: {required: "Feild cannot be empty"},
+                    cbc: {required: "Feild cannot be empty"},
+                    xray: {required: "Feild cannot be empty"},
+                    ct_scan: {required: "Feild cannot be empty"},
+                    ECG: {required: "Feild cannot be empty"}
+
+                }, errorElement: "span",
+                submitHandler: function (form) {
                     $.ajax({
                         url: '<?= base_url("Welcome/Testings") ?>',
                         type: "POST",
@@ -957,14 +965,56 @@ submitHandler: function (form) {
                             }
                         },
                         error: function (error) {
-                            alert("Something went to wrong");
+                             toastr.error("something went to wrong");
                         }
 
                     });
                 }
 
- });
+            });
 
+ //Sympotoms
+            $("#SYMPTOMS").validate({
+                rules: {symptoms_pat_id: {required: true},
+                    date_start: {required: true},
+                    admitted: {required: true},
+                    sample_collection: {required: true},
+                    res_sample:{required: true},
+                    health_status: {required: true}
+                },
+                messages: {
+                    symptoms_pat_id: {required: "Feild cannot be empty"},
+                    date_start: {required: "Feild cannot be empty"},
+                    admitted: {required: "Feild cannot be empty"},
+                    sample_collection: {required: "Feild cannot be empty"},
+                    res_sample: {required: "Feild cannot be empty"},
+                    health_status: {required: "Feild cannot be empty"}
+
+                }, errorElement: "span",
+                submitHandler: function (form) {
+                    $.ajax({
+                        url: '<?= base_url("Welcome/add_symptoms") ?>',
+                        type: "POST",
+                        datatype: "JSON",
+                        data: $("#SYMPTOMS").serialize(),
+                        success: function (success) {
+                            success = JSON.parse(success);
+                            if (success.status === true) {
+                                toastr.success(success.body);
+                                $("#SYMPTOMS")[0].reset();
+                            } else {
+
+                                toastr.error(success.body); //toster.error
+                            }
+                        },
+                        error: function (error) {
+                             toastr.error("something went to wrong");
+                        }
+
+                    });
+                }
+
+            });
         </script>
     </body>
 </html>

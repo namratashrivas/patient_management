@@ -36,6 +36,7 @@ class Welcome extends CI_Controller {
             } echo json_encode($response);
         }
         public function TRAVEL(){
+            $Patient_ID = $this->input->post('travel_pat_id');
             $Visited = $this->input->post('visited');
             $Country_of_Visit = $this->input->post('country_of_visit');
             $Date_of_arrival = $this->input->post('date_arrival');
@@ -45,7 +46,7 @@ class Welcome extends CI_Controller {
             $doctors_visited = $this->input->post('doc_visited');
           $tested_cov	= $this->input->post('tested_cov');
             
-            $data_travel = array("Visited"=>$Visited, "Country_of_Visit"=>$Country_of_Visit,
+            $data_travel = array("Patient_ID"=>$Patient_ID,"Visited"=>$Visited, "Country_of_Visit"=>$Country_of_Visit,
                 "Date_of_arrival"=>$Date_of_arrival,"Date_of_contact"=>$Date_of_arrival,
                "unknown_contact"=>$unknown_contact,"place_of_contact"=>$place_of_contact,
                 "doctors_visited"=>$doctors_visited, "Result"=>$tested_cov
@@ -64,6 +65,7 @@ class Welcome extends CI_Controller {
             
         }
         public function  Testings(){
+            $Patient_ID = $this->input->post('testing_pat_id');
             $rapid_testing = $this->input->post('rapid_testing');
             $cbc = $this->input->post('cbc');
             $xray = $this->input->post('xray');
@@ -71,6 +73,7 @@ class Welcome extends CI_Controller {
             $ECG = $this->input->post('ECG');
             
              $testing_data=array(
+                 "Patient_ID"=>$Patient_ID,
                  "Rapid_Testing" =>$rapid_testing,
                   "CBC"=>$cbc,
                   "CHESTX-RAY"=>$xray,
@@ -90,5 +93,35 @@ class Welcome extends CI_Controller {
             } echo json_encode($response);
             
         }
-       
+        
+        public function add_symptoms(){
+            $Patient_ID = $this->input->post('symptoms_pat_id');
+            $symptoms_name = $this->input->post('sys');
+            $date_of_starting_of_symptoms = $this->input->post('date_start');
+            $quarantine_place =$this->input->post('admitted');
+            $date_of_sample_collection = $this->input->post('sample_collection');
+            $result_of_sample_collection=$this->input->post('res_sample');
+            $health_status = $this->input->post('health_status');
+            
+            $sys_data=array(
+                'Patient_ID'=>$Patient_ID,
+                'symptoms_name' => implode(",", $symptoms_name),   
+                'date_of_starting_of_symptoms'=>$date_of_starting_of_symptoms,
+                'quarantine_place'=>$quarantine_place,
+                'date_of_sample_collection'=>$date_of_sample_collection,
+                'result_of_sample_collection'=>$result_of_sample_collection,
+                'health_status'=>$health_status             
+                );
+            if ($this->User_model->add_sys($sys_data)) {
+                $response['profile'] = $sys_data;
+                $response["status"] = true;
+                $response["body"] = "Symptoms Information Added Successfully";
+            } else {
+                $response['profile'] = $sys_data;
+                $response["status"] = false;
+                $response["body"] = "Failed To Add Sympotoms Information";
+            } echo json_encode($response);
+            
+        }
+      
 }

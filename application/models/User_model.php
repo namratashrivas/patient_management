@@ -29,4 +29,14 @@ class user_model extends CI_Model {
             return FALSE;
         }
     }
+        public function add_sys($sys_data){
+        $s= $this->db->insert('user_symptoms_detail',$sys_data);
+        if($this->db->affected_rows()===1){
+            return TRUE;
+            
+        }
+        else{
+            return FALSE;
+        }
+    }
 }
