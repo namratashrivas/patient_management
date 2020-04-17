@@ -19,4 +19,14 @@ class user_model extends CI_Model {
             return FALSE;
         }
     }
+    public function add_testing($testing_data){
+        $r= $this->db->insert('user_testing_report',$testing_data);
+        if($this->db->affected_rows()===1){
+            return TRUE;
+            
+        }
+        else{
+            return FALSE;
+        }
+    }
 }

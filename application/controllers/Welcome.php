@@ -43,12 +43,12 @@ class Welcome extends CI_Controller {
             $unknown_contact = $this->input->post('unknown_person');
             $place_of_contact = $this->input->post('positive_patients');
             $doctors_visited = $this->input->post('doc_visited');
-            $tested_cov	= $this->input->post('tested_cov');
+          $tested_cov	= $this->input->post('tested_cov');
             
             $data_travel = array("Visited"=>$Visited, "Country_of_Visit"=>$Country_of_Visit,
                 "Date_of_arrival"=>$Date_of_arrival,"Date_of_contact"=>$Date_of_arrival,
                "unknown_contact"=>$unknown_contact,"place_of_contact"=>$place_of_contact,
-                "doctors_visited"=>$doctors_visited, "$tested_cov"=>$tested_cov
+                "doctors_visited"=>$doctors_visited, "Result"=>$tested_cov
                 
                 );
             
@@ -60,6 +60,33 @@ class Welcome extends CI_Controller {
                 $response['profile'] = $data_travel;
                 $response["status"] = false;
                 $response["body"] = "Failed To Create Travel History";
+            } echo json_encode($response);
+            
+        }
+        public function  Testings(){
+            $rapid_testing = $this->input->post('rapid_testing');
+            $cbc = $this->input->post('cbc');
+            $xray = $this->input->post('xray');
+            $ct_Scan = $this->input->post('ct_Scan');
+            $ECG = $this->input->post('ECG');
+            
+             $testing_data=array(
+                 "testing_report" =>$rapid_testing,
+                  "testing_report"=>$cbc,
+                  "testing_report"=>$xray,
+                  "testing_report"=>$ct_Scan,
+                  "testing_report"=>$ECG
+             );
+             
+             
+            if ($this->User_model->add_testing($testing_data)) {
+                $response['profile'] = $testing_data;
+                $response["status"] = true;
+                $response["body"] = "Testing Report Created Successfully";
+            } else {
+                $response['profile'] = $testing_data;
+                $response["status"] = false;
+                $response["body"] = "Failed To Create Testing Report";
             } echo json_encode($response);
             
         }
