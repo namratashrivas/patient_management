@@ -61,6 +61,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <div class="container-fluid">
 
 
+        
         <div class="row">
           <div class="col-md-12">
             <div class="card">
@@ -82,7 +83,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="row">
                 
                 <div class="card-body">
-                    <form role="form" id="quickForm" novalidate="novalidate">
+                    <form role="form" id="quickForm" name="quickForm" method="POST" novalidate="novalidate">
                   <div class="form-group">
                     <label for="Name">Name</label>
                     <input type="text" name="name" class="form-control " id="name" placeholder="Enter Name" 
@@ -94,9 +95,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   <span id="age-error" class="error invalid-feedback"></span></div>
                   <div class="form-group">
                         <label> Select Gender</label>
-                        <select class="custom-select">
-                          <option>Male</option>
-                          <option>Female</option>
+                        <select class="custom-select" id="sex" name="sex">
+                          <option value="Male">Male</option>
+                          <option value="Female">Female</option>
                           <option>Others</option>
                           
                         </select>
@@ -133,7 +134,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <!-- Main row -->
         <div class="row">
           <!-- Left col -->
-          <div class="col-md-12">
+           <div class="col-md-12">
             <!-- MAP & BOX PANE -->
             <div class="card  collapsed-card">
               <div class="card-header">
@@ -179,7 +180,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   <span id="unknown_person-error" class="error invalid-feedback"></span></div>
                   <div class="form-group">
                         <label> Contact with covid positive patients</label>
-                        <select class="custom-select">
+                        <select class="custom-select" id="positive_patients" name="positive_patients">
                           <option value="In locality">In family</option>
                           <option value="In locality">In locality</option>                          
                         </select>
@@ -187,10 +188,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="form-group">
                     <label for="doctors visited">Doctors visited</label>
                     <input type="text" name="doc_visited" class="form-control " id="doc_visited" placeholder="Enter Doctors Visited" >
-                  <span id="doc_visited-error" class="error invalid-feedback"></span></div>
+                  <span id="doc_visited-error" class="error invalid-feedback"></span>
+                        </div>
                   <div class="form-group">
                         <label> DATE tested for SARS COV-2 ( RTPCR)</label>
-                        <select class="custom-select">
+                        <select class="custom-select" id="tested_cov" name="tested_cov">
                           <option value="Positive">Positive</option>
                           <option value="Negative">Negative</option>                          
                         </select>
@@ -213,8 +215,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
            
             <!-- /.card -->
-          </div>
-          
+          </div> 
           <div class="col-md-12">
             <!-- MAP & BOX PANE -->
             <div class="card  collapsed-card">
@@ -522,14 +523,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <div class="card-body">
                 <div class="tab-content" id="custom-tabs-one-tabContent">
                   <div class="tab-pane fade active show" id="custom-tabs-one-home" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
-                     <div class="row">
-                      <label class="col-md-3">Name</label>  <label class="col-md-6">Bhavana</label>
+                    <div class="row">
+                         <label class="col-md-3">Name</label>  
+                         <label class="col-md-6">Bhavana</label></div>
                       <label class="col-md-3">Age</label>  <label class="col-md-6">95</label>
                       <label class="col-md-3">Gender</label>  <label class="col-md-6">Female</label>
                       <label class="col-md-3">District</label>  <label class="col-md-6">Thane</label>
                       <label class="col-md-3">Address</label>  <label class="col-md-6">ABC-103 haunted house road 101 green vally</label>
                       <label class="col-md-3">Contact Number</label>  <label class="col-md-6">9920626758</label>
-                     </div>
+ 
                   </div>
                   <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
                      Mauris tincidunt mi at erat gravida, eget tristique urna bibendum. Mauris pharetra purus ut ligula tempor, et vulputate metus facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas sollicitudin, nisi a luctus interdum, nisl ligula placerat mi, quis posuere purus ligula eu lectus. Donec nunc tellus, elementum sit amet ultricies at, posuere nec nunc. Nunc euismod pellentesque diam. 
@@ -646,6 +648,109 @@ function ShowHideDiv(chksymptons) {
             });
         }
     });
+    $("#quickForm").validate({
+    rules:{
+                name:{required:true},
+        age:{required:true},
+        District:{required:true},
+        address:{required:true},
+        contact_number:{required:true}
+    },
+    message:{
+        name:{
+            required: "Please Enter Name"
+        },
+        age:{required:"Please Enter Age"},
+        District:{required:"Please Enter District"},
+        address:{required:"Please Enter Address"},
+        contact_number:{required:"Please Enter Contact Number"}
+    },errorElement: "span",
+     submitHandler: function(form){
+          $.ajax({
+              url: '<?= base_url("Welcome/add_profile") ?>',
+              type: "POST",
+              datatype: "JSON",
+              data: $("#quickForm").serialize(),
+              success: function (success) {
+                                                        success = JSON.parse(success);
+                                                        if (success.status === true) {
+                                                            toastr.success(success.body);
+//                                                            alert("Profile Details  added  Successfully.");
+//                                                            $('#tab_6_2_loan').click();
+//                                                            $("#quickForm")[0].reset();
+
+                                                        } else {
+
+                                                                 toastr.success(success.body);
+                                                        }
+                                                    },
+                                                    error: function (error) {
+                                                                 alert("Something went to wrong");
+//                                                        
+                                                    }
+                                              
+          });
+     }
+    
+});
+
+
+//Travel history
+
+$("#TRAVEL").validate({
+
+rules:{
+                visited:{required:true},
+        country_of_visit:{required:true},
+        date_arrival:{required:true},
+        date_contact:{required:true},
+        unknown_person:{required:true},
+        positive_patients:{required:true},
+        doc_visited:{required:true},
+        tested_cov:{required:true}
+        
+    },
+    message:{
+        visited:{
+            required: "Please Enter Visited"
+        },
+        country_of_visit:{required:"Please Enter Age"},
+        date_arrival:{required:"Please Enter District"},
+        date_contact:{required:"Please Enter Address"},
+        unknown_person:{required:"Please Enter Contact Number"},
+        positive_patients:{required:"Please Enter Contact Number"},
+        doc_visited:{required:"Please Enter Contact Number"},
+        tested_cov:{required:"Select Your Test Result"}
+        
+    },errorElement: "span",
+     submitHandler: function(form){
+          $.ajax({
+              url: '<?= base_url("Welcome/TRAVEL") ?>',
+              type: "POST",
+              datatype: "JSON",
+              data: $("#TRAVEL").serialize(),
+              uccess: function (success) {
+                                                        success = JSON.parse(success);
+                                                        if (success.status === true) {
+                                                            toastr.success(success.body);
+//                                                            alert("Profile Details  added  Successfully.");
+//                                                            $('#tab_6_2_loan').click();
+                                                            $("#quickForm")[0].reset();
+
+                                                        } else {
+
+                                                                 toastr.error(success.body); //toster.error
+                                                        }
+                                                    },
+                                                    error: function (error) {
+                                                                 alert("Something went to wrong");
+//                                                        
+                                                    }
+                                              
+          });
+     }
+});
+
 </script>
 </body>
 </html>
