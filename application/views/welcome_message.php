@@ -65,9 +65,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <!-- Main content -->
                 <section class="content">
                     <div class="container-fluid">
-
-
-
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="card">
@@ -77,11 +74,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <div class="card-tools">
                                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                                 <i class="fas fa-minus"></i>
-                                            </button>
-
-                                            <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                                <i class="fas fa-times"></i>
-                                            </button>
                                         </div>
                                     </div>
                                     <!-- /.card-header -->
@@ -154,11 +146,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                                         <div class="card-tools">
                                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                                <i class="fas fa-minus"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                                <i class="fas fa-times"></i>
-                                            </button>
+                                                <i class="fas fa-plus"></i>
                                         </div>
                                     </div>
                                     <!-- /.card-header -->
@@ -241,11 +229,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                                         <div class="card-tools">
                                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                                <i class="fas fa-minus"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                                <i class="fas fa-times"></i>
-                                            </button>
+                                                <i class="fas fa-plus"></i>
                                         </div>
                                     </div>
                                     <!-- /.card-header -->
@@ -302,11 +286,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                                         <div class="card-tools">
                                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                                <i class="fas fa-minus"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                                <i class="fas fa-times"></i>
-                                            </button>
+                                                <i class="fas fa-plus"></i>
                                         </div>
                                     </div>
                                     <!-- /.card-header -->
@@ -384,11 +364,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                                         <div class="card-tools">
                                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                                <i class="fas fa-minus"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                                <i class="fas fa-times"></i>
-                                            </button>
+                                                <i class="fas fa-plus"></i>
                                         </div>
                                     </div>
                                     <!-- /.card-header -->
@@ -396,20 +372,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <div class="row">
 
                                             <div class="card-body">
-                                                <form role="form" id="TREATMENT"  name="TREATMENT"novalidate="novalidate">
+                                                <form role="form" id="treatment"  name="treatment" novalidate="novalidate">
                                                     <div class="form-group">
                                                         <label for="HCQS">HCQS</label>
-                                                        <input type="text" name="HCQS" class="form-control " id="HCQS" 
-                                                               placeholder="EnterHCQS"  >
+                                                        <input type="text" name="HCQS" class="form-control" id="HCQS"placeholder="EnterHCQS"  >
                                                         <span id="HCQS-error" class="error invalid-feedback"></span></div>
                                                     <div class="form-group">
                                                         <label for="AZYTHROMYCINE">AZYTHROMYCINE </label>
-                                                        <input type="text" name="AZYTHROMYCINE" class="form-control " id="AZYTHROMYCINE" placeholder="Enter AZYTHROMYCINE " >
-                                                        <span id="AZYTHROMYCINE-error" class="error invalid-feedback"></span></div>
+                                                        <input type="text" name="azythromycine" class="form-control " id="azythromycine" placeholder="Enter AZYTHROMYCINE " >
+                                                        <span id="azythromycine-error" class="error invalid-feedback"></span></div>
 
                                                     <div class="form-group">
                                                         <label for="VITAMINE C">VITAMINE C </label>
-                                                        <input type="text" name="VITAMINE_C " class="form-control " id="VITAMINE_C" placeholder="Enter VITAMINE C " >
+                                                        <input type="text" name="vitamin_c" class="form-control " id="vitamin_c" placeholder="Enter VITAMINE C " >
                                                         <span id="VITAMINE_C-error" class="error invalid-feedback"></span></div>
 
                                                     <div class="form-group">
@@ -420,8 +395,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                         <label for="OTHERS">OTHERS</label>
                                                         <input type="text" name="others" class="form-control " id="others" placeholder="Enter OTHERS" >
                                                         <span id="others-error" class="error invalid-feedback"></span></div>
-
-
                                                     <div class="card-footer">
                                                         <button type="submit" class="btn btn-primary">Submit</button>
                                                     </div>
@@ -446,11 +419,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                                         <div class="card-tools">
                                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                                <i class="fas fa-minus"></i>
+                                                <i class="fas fa-plus"></i>
                                             </button>
-                                            <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                                <i class="fas fa-times"></i>
-                                            </button>
+                                            
                                         </div>
                                     </div>
                                     <!-- /.card-header -->
@@ -492,9 +463,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                         <label for="Patient file">Patient file</label>
                                                         <input type="file" name="Patient_file" class="form-control " id="Patient_file" placeholder="Enter Patient File" >
                                                         <span id="Patient_file-error" class="error invalid-feedback"></span></div>
-
-
-
                                                     <div class="card-footer">
                                                         <button type="submit" class="btn btn-primary">Submit</button>
                                                     </div>
@@ -638,6 +606,55 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     $.ajax({
                         type: "POST",
                         url: "<?= base_url("upload_files") ?>",
+                        data: new FormData(form_data),
+                        contentType: false,
+                        cache: false,
+                        processData: false,
+                        async: false,
+                        cache: false,
+                        success: function (success) {
+                            success = JSON.parse(success);
+                            if (success.status === true) {
+
+                                toastr.success(success.body);
+                                //                                              $('#file_uploading').hide();
+
+                                $("#other_details").trigger("reset");
+                            } else {
+
+                                toastr.error(success.body);
+                            }
+                        },
+                        error: function (error) {
+
+                            toastr.error("something went to wrong");
+
+                        }
+                    });
+                }
+            });
+            $("#treatment").validate({
+                rules: {
+                    HCQS: {required: true},
+                    azythromycine: {required: true},
+                    vitamin_c: {required: true},
+                    retro_viral: {required: true},
+                    others: {required: true}
+                },
+                messages: {
+                    HCQSazythromycine: {required: "Feild cannot be empty"},
+                    azythromycine: {required: "Feild cannot be empty"},
+                    vitamin_c: {required: "Feild cannot be empty"},
+                    retro_viral: {required: "Feild cannot be empty"},
+                    others: {required: "Feild cannot be empty"}
+                },
+                errorElement: 'span',
+                submitHandler: function (form) {
+                    var form_data = document.getElementById('treatment');
+                    console.log(form_data);
+                    $.ajax({
+                        type: "POST",
+                        url: "<?= base_url("insert_treatment") ?>",
                         data: new FormData(form_data),
                         contentType: false,
                         cache: false,

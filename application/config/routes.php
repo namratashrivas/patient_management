@@ -53,4 +53,5 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['upload_files'] = 'File_uploadation/upload_files';
+$route['insert_treatment'] = 'File_uploadation/insert_treatment';
 

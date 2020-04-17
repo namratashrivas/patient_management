@@ -24,6 +24,26 @@ class File_modal extends CI_Model {
         }
         return $result;
     }
+    public function add_treatment_data($data) {
+        try {
+            $this->db->trans_start();
+            $this->db->insert('user_treatments_report', $data);
+            if ($this->db->trans_status() === FALSE) {
+                $this->db->trans_rollback();
+                log_message('info', "insert user Transaction Rollback");
+                $result = FALSE;
+            } else {
+                $this->db->trans_commit();
+                log_message('info', "insert user Transaction Commited");
+                $result = TRUE;
+            }
+            $this->db->trans_complete();
+        } catch (Exception $exc) {
+            log_message('error', $exc->getMessage());
+            $result = FALSE;
+        }
+        return $result;
+    }
      function generate_img_id() {
       
          $result=$this->db->query("SELECT detail_id FROM `other_detail` order by detail_id DESC limit 0,1")->row();
