@@ -15,6 +15,7 @@ class File_uploadation extends CI_Controller {
     
     
     public function insert_treatment() {
+      $Patient_ID  = $this->input->post_get("treatment_pat_id");
     $HCQS=$this->input->post_get("HCQS");
     $azythromycine=$this->input->post_get("azythromycine");
     $vitamin_c=$this->input->post_get("vitamin_c");
@@ -22,6 +23,7 @@ class File_uploadation extends CI_Controller {
     $others=$this->input->post_get("others");
 
     $data=array(
+        "Patient_ID"=>$Patient_ID,
             "HCQS"=>$HCQS,
             "azythromycine"=>$azythromycine,
             "vitamin_c"=>$vitamin_c,
@@ -41,7 +43,7 @@ class File_uploadation extends CI_Controller {
 
     }
     public function upload_files() {
-      
+      $Patient_ID=$this->input->post_get("other_pat_id");
 $remarks=$this->input->post_get("remarks");
 $ward=$this->input->post_get("ward");
 $recovered=$this->input->post_get("recovered");
@@ -69,6 +71,7 @@ $death=$this->input->post_get("death");
          
               // $uploaded_on = date("Y-m-d H:i:s");
         $data=array(
+            "Paitent_ID"=>$other_pat_id,
             "REMARK"=>$remarks,
             "WARD"=>$ward,
             "RECOVERED"=>$recovered,
