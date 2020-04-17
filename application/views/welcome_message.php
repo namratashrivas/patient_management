@@ -46,9 +46,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <div class="col-sm-6">
                                 <form class="form-inline ml-3">
                                     <div class="input-group input-group-sm">
-                                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                                        <input class="form-control" onchange="get_all_data()" id="search" name="search" type="search" placeholder="Search" aria-label="Search">
                                         <div class="input-group-append">
-                                            <button class="btn btn-navbar" type="submit">
+                                            <button class="btn btn-navbar" type="button" onclick="get_all_data()">
                                                 <i class="fas fa-search"></i>
                                             </button>
                                         </div>
@@ -1015,6 +1015,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 }
 
             });
+            function get_all_data()
+        {
+            var search = document.getElementById('search').value;
+            load_data(search);
+        }
+
+        function load_data(search) {
+            $("#user_details").DataTable({
+                destroy: true,
+                "processing": true,
+                "serverSide": true,
+                "order": [],
+                "ajax": {
+                    "url": "<?php echo base_url('get_all_data'); ?>",
+                    "type": "POST",
+                    data: function (a_data) {
+                        a_data.search = search;
+                    }
+                }                
+            });
+        }
+          
         </script>
     </body>
 </html>
