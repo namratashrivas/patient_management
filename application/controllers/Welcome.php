@@ -10,9 +10,137 @@ class Welcome extends CI_Controller {
     }
 	public function index()
 	{
+    $user_detals = '2';
 		$this->load->view('welcome_message');
 	}
-        
+      public function get_all_user_details() { //done by pooja lote
+        if (!empty($this->input->get_post('pat_name'))) {
+            $where_data = array('Name' => $this->input->get_post('pat_name'));
+
+           } else {
+ $where_data = array();
+           } 
+            $data = array('*');
+             $result = $this->User_model->LoadUser($data, $where_data);
+            //echo $this->db->last_query();
+            $data = '';
+          $Patient_ID = '';
+            if ($result != false) {
+              $i = 1;
+                foreach ($result as $row) {
+                   $Patient_ID .= $row->Patient_ID.','; 
+                    $data .= '<tbody><tr>
+                      <td>'.$i++.'.</td>
+                      <td><strong>Name</strong></td>
+                      <td>'.$row->Name.'</td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td><strong>Age</strong></td>
+                      <td>'.$row->Age.'</td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td><strong>Sex</strong></td>
+                      <td>'.$row->Sex.'</td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td><strong>District</strong></td>
+                      <td>'.$row->District.'</td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td><strong>Address</strong></td>
+                      <td>'.$row->Address.'</td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td><strong>Contact_Number</strong></td>
+                      <td>'.$row->Contact_Number.'</td>
+                    </tr>                    
+                  </tbody>';
+                $response['status'] = 200;
+                $response['body'] = $data;
+                $response['pat_id'] = $Patient_ID;
+            }
+            } else {
+                $response['status'] = 201;
+                $response['body'] = "no data found";
+            }
+       
+        echo json_encode($response);
+    }  
+
+    public function get_all_travel_details() { //done by pooja lote
+        if (!empty($this->input->get_post('pat_id'))) {
+            // $where_data = array('Name' => $this->input->get_post('pat_name'));
+ $where_data = array();
+
+           } else {
+ $where_data = array();
+           } 
+            $data = array('*');
+             $result = $this->User_model->LoadTravel($data, $where_data);
+            //echo $this->db->last_query();
+            $data = '';
+         
+            if ($result != false) {
+              $i = 1;
+                foreach ($result as $row) {
+                   
+                    $data .= '<tbody><tr>
+                      <td>'.$i++.'.</td>
+                      <td><strong>Visited</strong></td>
+                      <td>'.$row->Visited.'</td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td><strong>Country of Visit</strong></td>
+                      <td>'.$row->Country_of_Visit.'</td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td><strong>Date of arrival from Affected Country</strong></td>
+                      <td>'.$row->Date_of_arrival.'</td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td><strong>Date of contact with person arrived from abroad</strong></td>
+                      <td>'.$row->Date_of_contact.'</td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td><strong>Unknown contact with person traveled from abroad</strong></td>
+                      <td>'.$row->unknown_contact.'</td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td><strong>Contact with covid positive patients</strong></td>
+                      <td>'.$row->place_of_contact.'</td>
+                    </tr>  
+                    <tr>
+                      <td></td>
+                      <td><strong>Doctors visited</strong></td>
+                      <td>'.$row->doctors_visited.'</td>
+                    </tr>  
+                    <tr>
+                      <td></td>
+                      <td><strong>Date tested for SARS COV-2 (RTPCR)</strong></td>
+                      <td>'.$row->Result.'</td>
+                    </tr>                    
+                  </tbody>';
+                $response['status'] = 200;
+                $response['body'] = $data;
+                
+            }
+            } else {
+                $response['status'] = 201;
+                $response['body'] = "no data found";
+            }
+       
+        echo json_encode($response);
+    }  
          public function add_profile(){
             
              $name= $this->input->post('name');

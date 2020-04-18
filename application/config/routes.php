@@ -56,4 +56,8 @@ $route['upload_files'] = 'File_uploadation/upload_files';
 $route['insert_treatment'] = 'File_uploadation/insert_treatment';
 $route["get_patient"] = "File_uploadation/get_patient";
 $route["get_all_data"] = "File_uploadation/get_all_data";
+$route["get_all_user_details"] = "Welcome/get_all_user_details";
+$route["get_all_travel_details"] = "Welcome/get_all_travel_details";
+
+
 

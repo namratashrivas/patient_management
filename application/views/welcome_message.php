@@ -46,12 +46,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <div class="col-sm-6">
                                 <form class="form-inline ml-3">
                                     <div class="input-group input-group-sm">
-                                        <input class="form-control" onchange="get_all_data()" id="search" name="search" type="search" placeholder="Search" aria-label="Search">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-navbar" type="button" onclick="get_all_data()">
-                                                <i class="fas fa-search"></i>
-                                            </button>
-                                        </div>
+                                        <input class="form-control" onkeyup="load_user_details(this.value)" id="search" name="search" type="search" placeholder="Search" aria-label="Search">
+                                        
                                     </div>
                                 </form>
 
@@ -507,6 +503,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <!-- /.row -->
 
                         <div class="row">
+                            
                             <div class="col-12 col-sm-12">
                                 <div class="card card-primary card-tabs">
                                     <div class="card-header p-0 pt-1">
@@ -536,22 +533,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <div class="tab-pane fade active show" id="custom-tabs-one-home" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
                                                 <div class="table-responsive" >
                                                     <form>
-                                                        <div id="travel_details" >
-                                                            <table class="table table-bordered">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>Name</th>
-                                                                        <th>Age</th>
-                                                                        <th>Gender</th>
-                                                                        <th>District</th>
-                                                                        <th>Address</th>
-                                                                        <th>Contact Number</th>
-
-                                                                    </tr>
-                                                                </thead>
-                                                            </table>
+                                                        <div id="user_details" >
+                                                            <table class="table table-sm" id="user_details_table"></table>
                                                         </div>
-
                                                     </form>
                                                 </div>
                                             </div>
@@ -559,20 +543,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <div class="table-responsive" >
                                                     <form>
                                                         <div id="travel_details" >
-                                                            <table class="table table-bordered">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>Visited</th>
-                                                                        <th>Country of Visit</th>
-                                                                        <th>Date of arrival from Affected Country</th>
-                                                                        <th>Date of contact with person arrived from abroad</th>
-                                                                        <th>Unknown contact with person traveled from abroad</th>
-                                                                        <th>Contact with covid positive patients </th>
-                                                                        <th>Doctors visited</th>
-                                                                        <th>DATE tested for SARS COV-2 ( RTPCR) </th>
-                                                                    </tr>
-                                                                </thead>
-                                                            </table>
+                                                            <table class="table table-sm" id="travel_details_table"></table>
                                                         </div>
 
                                                     </form>
@@ -582,38 +553,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <div class="table-responsive" >
                                                     <form>
                                                         <div id="testing_details" >
-                                                            <table class="table table-bordered">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>Rapid Testing</th>
-                                                                        <th>CBC</th>
-                                                                        <th>CHEST X-RAY</th>
-                                                                        <th>CT- SCAN</th>
-                                                                        <th>ECGs </th>
-                                                                    </tr>
-                                                                </thead>
-                                                            </table>
+                                                             
                                                         </div>
 
-                                                    </form>
+                                                    </form><table class="table table-sm" id="testing_details_table"></table>
                                                 </div>
                                             </div>
                                             <div class="tab-pane fade" id="custom-tabs-one-settings" role="tabpanel" aria-labelledby="custom-tabs-one-settings-tab">
                                                 <div class="table-responsive" >
                                                     <form>
-                                                        <div id="SYMPTOMS_details" >
-                                                            <table class="table table-bordered">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>SYMPTOMS</th>
-                                                                        <th>Date of starting of symptoms</th>
-                                                                        <th>Hospital Where Admitted / home quatrentine</th>
-                                                                        <th>Date of sample collection (second)</th>
-                                                                        <th>Result of sample (second)</th>
-                                                                        <th>Current health status</th>
-                                                                    </tr>
-                                                                </thead>
-                                                            </table>
+                                                        <div id="symptoms_details" >
+                                                            <table class="table table-sm" id="symptoms_details_table"></table>
                                                         </div>
 
                                                     </form>
@@ -623,17 +573,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <div class="table-responsive" >
                                                     <form>
                                                         <div id="treatment_details" >
-                                                            <table class="table table-bordered">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>HCQS</th>
-                                                                        <th>AZYTHROMYCINE</th>
-                                                                        <th>VITAMINE C</th>
-                                                                        <th>RETRO VIRAL</th>
-                                                                        <th>OTHERS</th>
-                                                                    </tr>
-                                                                </thead>
-                                                            </table>
+                                                            <table class="table table-sm" id="treatment_details_table"></table>
                                                         </div>
 
                                                     </form>
@@ -643,19 +583,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <div class="table-responsive" >
                                                     <form>
                                                         <div id="others_details" >
-                                                            <table class="table table-bordered">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>Remarks</th>
-                                                                        <th>Ward</th>
-                                                                        <th>Recovered</th>
-                                                                        <th>DISCHARGE DATE</th>
-                                                                        <th>PATIENT DEATH</th>
-                                                                        <th>Patient image</th>
-                                                                        <th>Patient file</th>
-                                                                    </tr>
-                                                                </thead>
-                                                            </table>
+                                                             <table class="table table-sm" id="others_details_table"></table>
                                                         </div>
 
                                                     </form>
@@ -704,7 +632,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <script src="<?= base_url() ?>dist/js/toastr/toastr.min.js" type="text/javascript"></script>
         <script>
             $(document).ready(function () {
+var pat_name = "";
 
+load_user_details(pat_name);
 
                 $('input[type="radio"]').click(function () {
                     if ($(this).attr('id') == 'yes') {
@@ -721,17 +651,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     cache: false,
                     success: function (result) {
                         var data = result.options;
-                        console.log(data);
+                        // console.log(data);
                         if (result !== '') {
                             $('#travel_pat_id').html(data);
                             $('#testing_pat_id').html(data);
                             $('#symptoms_pat_id').html(data);
                             $('#treatment_pat_id').html(data);
+                            $('#other_pat_id').html(data);
                         } else {
                             $('#travel_pat_id').html("");
                             $('#testing_pat_id').html("");
                             $('#symptoms_pat_id').html("");
                             $('#treatment_pat_id').html("");
+                            $('#other_pat_id').html("");
+
                         }
                     },
                 });
@@ -1015,27 +948,74 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 }
 
             });
-            function get_all_data()
-        {
-            var search = document.getElementById('search').value;
-            load_data(search);
-        }
+        
 
-        function load_data(search) {
-            $("#user_details").DataTable({
-                destroy: true,
-                "processing": true,
-                "serverSide": true,
-                "order": [],
-                "ajax": {
-                    "url": "<?php echo base_url('get_all_data'); ?>",
-                    "type": "POST",
-                    data: function (a_data) {
-                        a_data.search = search;
-                    }
-                }                
-            });
+        
+        function load_travel_details(pat_id){
+            $.ajax({
+            type: "post",
+            url: "<?php echo base_url('get_all_travel_details') ?>",
+            data: {pat_id: pat_id},
+            dataType: "json",
+            success: function (result) {
+                if (result.status == 200) {
+                   
+                    $('#travel_details_table').empty();
+                    
+                    $('#travel_details_table').append(result.body);
+                    
+                } else {
+                    $('#travel_details_table').empty();
+                   
+
+                }
+            },
+            error: function (error) {
+            }
+        });
         }
+        function load_testing_details(pat_id){
+
+        }
+        function load_symptoms_details(pat_id){}
+        function load_treatment_details(pat_id){}
+        function load_other_details(pat_id){}
+        
+        function load_user_details(pat_name)
+    {
+     var pat_id = "";
+        $.ajax({
+            type: "post",
+            url: "<?php echo base_url('get_all_user_details') ?>",
+            data: {pat_name: pat_name},
+            dataType: "json",
+            success: function (result) {
+                if (result.status == 200) {
+                   pat_id = result.pat_id;
+                    $('#user_details_table').empty();
+                    
+                    $('#user_details_table').append(result.body);
+                    load_travel_details(pat_id);
+load_testing_details(pat_id);
+load_symptoms_details(pat_id);
+load_treatment_details(pat_id);
+load_other_details(pat_id);
+                } else {
+                    $('#user_details_table').empty();
+                   
+load_travel_details(pat_id);
+load_testing_details(pat_id);
+load_symptoms_details(pat_id);
+load_treatment_details(pat_id);
+load_other_details(pat_id);
+                }
+            },
+            error: function (error) {
+            }
+        });
+    
+
+    }
           
         </script>
     </body>

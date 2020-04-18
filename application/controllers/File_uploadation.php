@@ -9,8 +9,6 @@ class File_uploadation extends CI_Controller {
     }
 
     public function index() {
-
-//        $this->load->view("upload_file");
     }
     
     public function get_all_data() { //done by pooja
@@ -31,10 +29,6 @@ class File_uploadation extends CI_Controller {
         } else {
             $array = array("firm_id" => $firm_id, "YEAR(planning_start_date)" => $year_id, "customer_id" => $customer_id, "repetition_type" => 0);
         }
-//        if ($status == 1) {
-//            $array['status'] = 1;
-//        }
-
 
         $data = $row = array();
         $memData = $this->Project_model->getRows($_POST, $array, array("plan_id",
@@ -113,7 +107,7 @@ $death=$this->input->post_get("death");
          
               // $uploaded_on = date("Y-m-d H:i:s");
         $data=array(
-            "Paitent_ID"=>$other_pat_id,
+            "Patient_ID"=>$other_pat_id,
             "REMARK"=>$remarks,
             "WARD"=>$ward,
             "RECOVERED"=>$recovered,
