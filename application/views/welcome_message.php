@@ -24,6 +24,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         .error{
             color:red;
         }
+        label{
+                font-size: 12px !important;
+
+        }
+        
     </style>
 
     <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
