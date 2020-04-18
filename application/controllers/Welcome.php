@@ -391,12 +391,12 @@ $where_for_loop_data .="Patient_ID =".$array_pat[$i]. " OR ";
         <tr>
         <td></td>
         <td><strong>Patient image</strong></td>
-        <td>'.$row->Patient_image.'</td>
+        <td><img src="'.base_url().$row->Patient_image.'" alt="Patient Image" height="42" width="42"></td>
         </tr>
         <tr>
         <td></td>
         <td><strong>Patient file</strong></td>
-        <td>'.$row->Patents_files.'</td>
+        <td><a target="_blank" href="'.base_url().$row->Patents_files.'"><i class="fa fa-fw fa-download"></i></a></td>
         </tr>                       
         </tbody>';
         $response['status'] = 200;

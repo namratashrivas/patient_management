@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
+?>
 
 <!DOCTYPE html>
 <html>
@@ -44,8 +44,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <div class="col-sm-6">
                                 <form class="form-inline ml-3">
                                     <div class="input-group input-group-sm">
-                                        <input class="form-control" onkeyup="hide_form(),load_user_details(this.value)" id="search" name="search" type="search" placeholder="Search" aria-label="Search">
-                                        
+                                    <div class="clo-md-12">
+                                       <input class="form-control" onkeyup="hide_form(),load_user_details(this.value)" id="search" name="search" type="search" style="width: 500px; height: 50px" placeholder="Search Patient Name...." aria-label="Search">
+                                      </div> 
                                     </div>
                                    
                                 </form>
@@ -502,7 +503,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                         <!-- /.row -->
 
-                        <div class="row">
+                        <div class="row" id="tab_view_div">
                             
                             <div class="col-12 col-sm-12">
                                 <div class="card card-primary card-tabs">
@@ -632,6 +633,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <script src="<?= base_url() ?>dist/js/toastr/toastr.min.js" type="text/javascript"></script>
         <script>
             $(document).ready(function () {
+                $("#tab_view_div").hide();
 var pat_name = "";
 
 load_user_details(pat_name);
@@ -693,7 +695,7 @@ load_user_details(pat_name);
                 },
                 errorElement: 'span',
                 submitHandler: function (form) {
-                    var form_data = document.getElementById('others_details');
+                    var form_data = document.getElementById('other_details');
                     console.log(form_data);
                     $.ajax({
                         type: "POST",
@@ -760,7 +762,7 @@ load_user_details(pat_name);
                                 toastr.success(success.body);
                                 //                                              $('#file_uploading').hide();
 
-                                $("#treatment").trigger("reset");
+                                $("#other_details").trigger("reset");
                             } else {
 
                                 toastr.error(success.body);
@@ -952,7 +954,8 @@ load_user_details(pat_name);
 function hide_form(){
      $("#create_module").hide();
      $("#create_button").show();
-
+     $("#tab_view_div").show();
+     
 }
 function show_form(){
      $("#create_module").show();

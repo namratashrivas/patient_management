@@ -62,6 +62,7 @@ $route["get_all_testing_details"] = "Welcome/get_all_testing_details";
 $route["get_all_symptoms_details"] = "Welcome/get_all_symptoms_details";
 $route["get_all_treatment_details"] = "Welcome/get_all_treatment_details";
 $route["get_all_other_details"] = "Welcome/get_all_other_details";
+$route["ExcelFile"] = "ExcelController";
 
 
 
