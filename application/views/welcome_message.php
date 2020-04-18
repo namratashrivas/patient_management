@@ -31,8 +31,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <!-- Navbar -->
             <nav class="mainheader navbar navbar-expand navbar-white navbar-light">
                 <h2>COVID -19</h2>
-
-
             </nav>
             <!-- /.navbar -->
 
@@ -46,12 +44,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <div class="col-sm-6">
                                 <form class="form-inline ml-3">
                                     <div class="input-group input-group-sm">
-                                        <input class="form-control" onkeyup="load_user_details(this.value)" id="search" name="search" type="search" placeholder="Search" aria-label="Search">
+                                        <input class="form-control" onkeyup="hide_form(),load_user_details(this.value)" id="search" name="search" type="search" placeholder="Search" aria-label="Search">
                                         
                                     </div>
+                                   
                                 </form>
 
-                            </div><!-- /.col -->
+                            </div>
+                            <div class="col-sm-6">
+                                      <button type="button" class="btn btn-primary">Create</button>
+                                    
+                            </div>
+                            <!-- /.col -->
                             <!-- /.col -->
                         </div><!-- /.row -->
                     </div><!-- /.container-fluid -->
@@ -61,7 +65,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <!-- Main content -->
                 <section class="content">
                     <div class="container-fluid">
-                        <div class="row">
+                        <div class="row" id="create_module" name="create_module">
                             <div class="col-md-12">
                                 <div class="card">
                                     <div class="card-header">
@@ -128,11 +132,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <!-- /.card -->
                             </div>
                             <!-- /.col -->
-                        </div>
-                        <!-- /.row -->
-
-                        <!-- Main row -->
-                        <div class="row">
+                        
                             <!-- Left col -->
                             <div class="col-md-12">
                                 <!-- MAP & BOX PANE -->
@@ -399,9 +399,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                         <span id="azythromycine-error" class="error invalid-feedback"></span></div>
 
                                                     <div class="form-group">
-                                                        <label for="VITAMINE C">VITAMINE C </label>
-                                                        <input type="text" name="vitamin_c" class="form-control " id="vitamin_c" placeholder="Enter VITAMINE C " >
-                                                        <span id="VITAMINE_C-error" class="error invalid-feedback"></span></div>
+                                                        <label for="VITAMIN C">VITAMIN C </label>
+                                                        <input type="text" name="vitamin_c" class="form-control " id="vitamin_c" placeholder="Enter VITAMIN C " >
+                                                        <span id="VITAMIN_C-error" class="error invalid-feedback"></span></div>
 
                                                     <div class="form-group">
                                                         <label for="RETRO VIRAL">RETRO VIRAL</label>
@@ -949,7 +949,12 @@ load_user_details(pat_name);
 
             });
         
-
+function hide_form(){
+     $("#create_module").hide();
+}
+function show_form(){
+     $("#create_module").show();
+}
         
         function load_travel_details(pat_id){
             $.ajax({
@@ -975,11 +980,97 @@ load_user_details(pat_name);
         });
         }
         function load_testing_details(pat_id){
+$.ajax({
+            type: "post",
+            url: "<?php echo base_url('get_all_testing_details') ?>",
+            data: {pat_id: pat_id},
+            dataType: "json",
+            success: function (result) {
+                if (result.status == 200) {
+                   
+                    $('#testing_details_table').empty();
+                    
+                    $('#testing_details_table').append(result.body);
+                    
+                } else {
+                    $('#testing_details_table').empty();
+                   
 
+                }
+            },
+            error: function (error) {
+            }
+        });
         }
-        function load_symptoms_details(pat_id){}
-        function load_treatment_details(pat_id){}
-        function load_other_details(pat_id){}
+        function load_symptoms_details(pat_id){
+            $.ajax({
+            type: "post",
+            url: "<?php echo base_url('get_all_symptoms_details') ?>",
+            data: {pat_id: pat_id},
+            dataType: "json",
+            success: function (result) {
+                if (result.status == 200) {
+                   
+                    $('#symptoms_details_table').empty();
+                    
+                    $('#symptoms_details_table').append(result.body);
+                    
+                } else {
+                    $('#symptoms_details_table').empty();
+                   
+
+                }
+            },
+            error: function (error) {
+            }
+        });
+        }
+        function load_treatment_details(pat_id){
+            $.ajax({
+            type: "post",
+            url: "<?php echo base_url('get_all_treatment_details') ?>",
+            data: {pat_id: pat_id},
+            dataType: "json",
+            success: function (result) {
+                if (result.status == 200) {
+                   
+                    $('#treatment_details_table').empty();
+                    
+                    $('#treatment_details_table').append(result.body);
+                    
+                } else {
+                    $('#treatment_details_table').empty();
+                   
+
+                }
+            },
+            error: function (error) {
+            }
+        });
+        }
+        function load_other_details(pat_id){
+            $.ajax({
+            type: "post",
+            url: "<?php echo base_url('get_all_other_details') ?>",
+            data: {pat_id: pat_id},
+            dataType: "json",
+            success: function (result) {
+                if (result.status == 200) {
+                   
+                    $('#others_details_table').empty();
+                    
+                    $('#others_details_table').append(result.body);
+                    
+                } else {
+                    $('#others_details_table').empty();
+                   
+
+                }
+            },
+            error: function (error) {
+            }
+        });
+        }
         
         function load_user_details(pat_name)
     {

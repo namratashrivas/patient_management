@@ -58,6 +58,11 @@ $route["get_patient"] = "File_uploadation/get_patient";
 $route["get_all_data"] = "File_uploadation/get_all_data";
 $route["get_all_user_details"] = "Welcome/get_all_user_details";
 $route["get_all_travel_details"] = "Welcome/get_all_travel_details";
+$route["get_all_testing_details"] = "Welcome/get_all_testing_details";
+$route["get_all_symptoms_details"] = "Welcome/get_all_symptoms_details";
+$route["get_all_treatment_details"] = "Welcome/get_all_treatment_details";
+$route["get_all_other_details"] = "Welcome/get_all_other_details";
+
 
 
 
