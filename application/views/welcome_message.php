@@ -28,6 +28,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 font-size: 12px !important;
 
         }
+        .form-control {
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 1px);
+        }
         
     </style>
 
