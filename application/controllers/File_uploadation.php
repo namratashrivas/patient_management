@@ -107,7 +107,7 @@ $death=$this->input->post_get("death");
          
               // $uploaded_on = date("Y-m-d H:i:s");
         $data=array(
-            "Patient_ID"=>$other_pat_id,
+            "Patient_ID"=>$Patient_ID,
             "REMARK"=>$remarks,
             "WARD"=>$ward,
             "RECOVERED"=>$recovered,

@@ -74,8 +74,15 @@ class Welcome extends CI_Controller {
 
     public function get_all_travel_details() { //done by pooja lote
       if (!empty($this->input->get_post('pat_id'))) {
-            // $where_data = array('Name' => $this->input->get_post('pat_name'));
-       $where_data = array();
+        $pat_id =  rtrim($this->input->get_post('pat_id'),",");
+        $array_pat = (explode(",",$pat_id));
+        $count_array = count($array_pat);
+        $where_for_loop_data="";
+        for($i=0;$i<$count_array;$i++){
+$where_for_loop_data .="Patient_ID =".$array_pat[$i]. " OR ";
+        }
+           $where_data = rtrim($where_for_loop_data," OR ");
+      //$where_data = array();
 
      } else {
        $where_data = array();
@@ -144,8 +151,14 @@ class Welcome extends CI_Controller {
 
  public function get_all_testing_details() { //done by pooja lote
       if (!empty($this->input->get_post('pat_id'))) {
-            // $where_data = array('Name' => $this->input->get_post('pat_name'));
-       $where_data = array();
+            $pat_id =  rtrim($this->input->get_post('pat_id'),",");
+        $array_pat = (explode(",",$pat_id));
+        $count_array = count($array_pat);
+        $where_for_loop_data="";
+        for($i=0;$i<$count_array;$i++){
+$where_for_loop_data .="Patient_ID =".$array_pat[$i]. " OR ";
+        }
+           $where_data = rtrim($where_for_loop_data," OR ");
 
      } else {
        $where_data = array();
@@ -199,8 +212,14 @@ class Welcome extends CI_Controller {
 
   public function get_all_symptoms_details() { //done by pooja lote
       if (!empty($this->input->get_post('pat_id'))) {
-            // $where_data = array('Name' => $this->input->get_post('pat_name'));
-       $where_data = array();
+       $pat_id =  rtrim($this->input->get_post('pat_id'),",");
+        $array_pat = (explode(",",$pat_id));
+        $count_array = count($array_pat);
+        $where_for_loop_data="";
+        for($i=0;$i<$count_array;$i++){
+$where_for_loop_data .="Patient_ID =".$array_pat[$i]. " OR ";
+        }
+           $where_data = rtrim($where_for_loop_data," OR ");
 
      } else {
        $where_data = array();
@@ -263,8 +282,14 @@ class Welcome extends CI_Controller {
   }
   public function get_all_treatment_details() { //done by pooja lote
       if (!empty($this->input->get_post('pat_id'))) {
-            // $where_data = array('Name' => $this->input->get_post('pat_name'));
-       $where_data = array();
+       $pat_id =  rtrim($this->input->get_post('pat_id'),",");
+        $array_pat = (explode(",",$pat_id));
+        $count_array = count($array_pat);
+        $where_for_loop_data="";
+        for($i=0;$i<$count_array;$i++){
+$where_for_loop_data .="Patient_ID =".$array_pat[$i]. " OR ";
+        }
+           $where_data = rtrim($where_for_loop_data," OR ");
 
      } else {
        $where_data = array();
@@ -317,8 +342,14 @@ class Welcome extends CI_Controller {
   }
   public function get_all_other_details() { //done by pooja lote
       if (!empty($this->input->get_post('pat_id'))) {
-            // $where_data = array('Name' => $this->input->get_post('pat_name'));
-       $where_data = array();
+        $pat_id =  rtrim($this->input->get_post('pat_id'),",");
+        $array_pat = (explode(",",$pat_id));
+        $count_array = count($array_pat);
+        $where_for_loop_data="";
+        for($i=0;$i<$count_array;$i++){
+$where_for_loop_data .="Patient_ID =".$array_pat[$i]. " OR ";
+        }
+           $where_data = rtrim($where_for_loop_data," OR ");
 
      } else {
        $where_data = array();

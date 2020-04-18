@@ -52,7 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                             </div>
                             <div class="col-sm-6">
-                                      <button type="button" class="btn btn-primary">Create</button>
+                                      <button type="button" id="create_button" onclick="show_form()" name="create_button" style="display: none" class="btn btn-primary">Create</button>
                                     
                             </div>
                             <!-- /.col -->
@@ -693,7 +693,7 @@ load_user_details(pat_name);
                 },
                 errorElement: 'span',
                 submitHandler: function (form) {
-                    var form_data = document.getElementById('other_details');
+                    var form_data = document.getElementById('others_details');
                     console.log(form_data);
                     $.ajax({
                         type: "POST",
@@ -760,7 +760,7 @@ load_user_details(pat_name);
                                 toastr.success(success.body);
                                 //                                              $('#file_uploading').hide();
 
-                                $("#other_details").trigger("reset");
+                                $("#treatment").trigger("reset");
                             } else {
 
                                 toastr.error(success.body);
@@ -951,9 +951,12 @@ load_user_details(pat_name);
         
 function hide_form(){
      $("#create_module").hide();
+     $("#create_button").show();
+
 }
 function show_form(){
      $("#create_module").show();
+     $("#create_button").hide();
 }
         
         function load_travel_details(pat_id){
