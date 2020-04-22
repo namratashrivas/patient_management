@@ -49,17 +49,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </div>
                         </div>
                         <div class="">
-                            <div class="col-md-3">
-                                <button type="button" id="create_button" onclick="show_form()" name="create_button" style="display:block" class="btn btn-warning">Create</button>
-                            </div>
-                             <div class="col-md-3">
-                                <button type="button" id="view_button" onclick="load_user_details('')" name="view_button" style="display:block" class="btn btn-primary">View</button>
-                            </div>
-                            <div class="col-md-3">                            
-                            <form class="" method="post" action="<?php echo base_url(); ?>ExcelController/action">
+                            <table>
+                                <tr>
+                                    <td>
+                                     <button type="button" id="create_button" onclick="show_form()" name="create_button" style="display:block" class="btn btn-warning">Create</button>
+
+                                    </td>
+                                    <td>
+                                                                        <button type="button" id="view_button" onclick="load_user_details('')" name="view_button" style="display:block" class="btn btn-primary">View</button>
+
+                                    </td>
+                                    <td>
+                                        <form class="" method="post" action="<?php echo base_url(); ?>ExcelController/action">
                                     <button type="submit" name="export" class="btn btn-success"> Export Data</button>
-                                 </form>  
-                            </div>
+                                 </form> 
+                                    </td>
+                                    
+                                </tr>
+                            </table>
+                       
                         </div><!-- /.row -->
                     </div><!-- /.container-fluid -->
                 </div>
