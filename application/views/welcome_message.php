@@ -31,8 +31,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="wrapper">
             <!-- Navbar -->
             <nav class="mainheader navbar navbar-expand navbar-white navbar-light">
-                <h2>COVID -19
-                    <small >3</small></h2>
+                <h2>COVID -19<br>
+                    
+                    <em style="font-size:19px;">Example</em></h2>
+
             
             <!-- /.navbar -->
 <ul class="navbar-nav ml-auto">
