@@ -44,7 +44,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="row mb-2">
                             <div class="col-sm-6">                                
                                 <div class="col-md-12">
-                                   <input class="form-control" onkeyup="hide_form(),load_user_details(this.value)" id="search" name="search" type="search" style="width: 300px; height: 50px" placeholder="Search Patient By Name" aria-label="Search">
+                                   <input class="form-control" id="search" name="search" type="search" style="width: 300px; height: 50px" placeholder="Search Patient By Name" aria-label="Search">
                                 </div>                                 
                             </div>
                         </div>
@@ -56,7 +56,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                                     </td>
                                     <td>
-                                                                        <button type="button" id="view_button" onclick="load_user_details('')" name="view_button" style="display:block" class="btn btn-primary">View</button>
+                                                                        <button type="button" id="view_button" value="" onclick="hide_form(),load_user_details()" name="view_button" style="display:block" class="btn btn-primary">View All</button>
 
                                     </td>
                                     <td>
@@ -68,7 +68,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </tr>
                             </table>
                        
-                        </div><!-- /.row -->
+                        </div>
+                        <!-- /.row -->
                     </div><!-- /.container-fluid -->
                 </div>
                 <!-- /.content-header -->
@@ -78,17 +79,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="container-fluid">
                         <div class="row" id="create_module" name="create_module">
                             <div class="col-md-12">
-                                <div class="card">
+                                <div class="card" id="profile_collapse_card">
                                     <div class="card-header">
                                         <h5 class="card-title">PROFILE</h5>
 
                                         <div class="card-tools">
-                                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                            <button  type="button" class="btn btn-tool" data-card-widget="collapse">
                                                 <i class="fas fa-minus"></i>
                                         </div>
                                     </div>
                                     <!-- /.card-header -->
-                                    <div class="card-body">
+                                    <div class="card-body" id="profile_collapse">
                                         <div class="row">
 
                                             <div class="card-body">
@@ -150,9 +151,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <!-- /.col -->
                         
                             <!-- Left col -->
-                            <div class="col-md-12">
+                            <div class="col-md-12" >
                                 <!-- MAP & BOX PANE -->
-                                <div class="card  collapsed-card">
+                                <div class="card collapsed-card" id="travel_collapse_card">
                                     <div class="card-header">
                                         <h3 class="card-title">TRAVEL HISTORY</h3>
 
@@ -162,7 +163,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         </div>
                                     </div>
                                     <!-- /.card-header -->
-                                    <div class="card-body">
+                                    <div class="card-body" id="travel_collapse">
                                         <div class="row">
 
                                             <div class="card-body">
@@ -238,7 +239,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </div> 
                             <div class="col-md-12">
                                 <!-- MAP & BOX PANE -->
-                                <div class="card  collapsed-card">
+                                <div class="card  collapsed-card" id="testing_collapse_card">
                                     <div class="card-header">
                                         <h3 class="card-title">TESTING</h3>
 
@@ -248,7 +249,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         </div>
                                     </div>
                                     <!-- /.card-header -->
-                                    <div class="card-body">
+                                    <div class="card-body" id="testing_collapse">
                                         <div class="row">
 
                                             <div class="card-body">
@@ -303,7 +304,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </div>
                             <div class="col-md-12">
                                 <!-- MAP & BOX PANE -->
-                                <div class="card  collapsed-card">
+                                <div class="card  collapsed-card" id="symptoms_collapse_card">
                                     <div class="card-header">
                                         <h3 class="card-title">SYMPTOMS</h3>
 
@@ -313,7 +314,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         </div>
                                     </div>
                                     <!-- /.card-header -->
-                                    <div class="card-body">
+                                    <div class="card-body" id="symptoms_collapse">
                                         <div class="row">
 
                                             <div class="card-body">
@@ -376,7 +377,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                             <div class="col-md-12">
                                 <!-- MAP & BOX PANE -->
-                                <div class="card  collapsed-card">
+                                <div class="card  collapsed-card" id="treatment_collapse_card">
                                     <div class="card-header">
                                         <h3 class="card-title">TREATMENT GIVEN</h3>
 
@@ -386,7 +387,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         </div>
                                     </div>
                                     <!-- /.card-header -->
-                                    <div class="card-body">
+                                    <div class="card-body" id="treatment_collapse">
                                         <div class="row">
 
                                             <div class="card-body">
@@ -443,7 +444,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                             <div class="col-md-12">
                                 <!-- MAP & BOX PANE -->
-                                <div class="card  collapsed-card">
+                                <div class="card  collapsed-card" id="other_collapse_card">
                                     <div class="card-header">
                                         <h3 class="card-title">OTHER DETAIL</h3>
 
@@ -455,7 +456,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         </div>
                                     </div>
                                     <!-- /.card-header -->
-                                    <div class="card-body">
+                                    <div class="card-body" id="other_collapse">
                                         <div class="row">
 
                                             <div class="card-body">
@@ -523,100 +524,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <!-- /.row -->
 
                         <div class="row" id="tab_view_div">
-                            
-                            <div class="col-12 col-sm-12">
-                                <div class="card card-primary card-tabs">
-                                    <div class="card-header p-0 pt-1">
-                                        <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist" style="font-size: 12px;">
-                                            <li class="nav-item">
-                                                <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill" href="#custom-tabs-one-home" role="tab" aria-controls="custom-tabs-one-home" aria-selected="true">Profile</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#custom-tabs-one-profile" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">Travel History</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#custom-tabs-one-messages" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">Testing</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" id="custom-tabs-one-settings-tab" data-toggle="pill" href="#custom-tabs-one-settings" role="tab" aria-controls="custom-tabs-one-settings" aria-selected="false">Symptoms</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" id="custom-tabs-one-settings-tab" data-toggle="pill" href="#custom-tabs-one-Treatment" role="tab" aria-controls="custom-tabs-one-settings" aria-selected="false">Treatment </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" id="custom-tabs-one-settings-tab" data-toggle="pill" href="#custom-tabs-one-OTHERSDETAILS" role="tab" aria-controls="custom-tabs-one-settings" aria-selected="false">Other Details</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="tab-content" id="custom-tabs-one-tabContent">
-                                            <div class="tab-pane fade active show" id="custom-tabs-one-home" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
-                                                <div class="table-responsive" >
-                                                    <form>
-                                                        <div id="user_details_table" >
-                                                            
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
-                                                <div class="table-responsive" >
-                                                    <form>
-                                                        <div id="travel_details" >
-                                                            <table class="table table-sm" id="travel_details_table"></table>
-                                                        </div>
-
-                                                    </form>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane fade" id="custom-tabs-one-messages" role="tabpanel" aria-labelledby="custom-tabs-one-messages-tab">
-                                                <div class="table-responsive" >
-                                                    <form>
-                                                        <div id="testing_details" >
-                                                             
-                                                        </div>
-
-                                                    </form><table class="table table-sm" id="testing_details_table"></table>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane fade" id="custom-tabs-one-settings" role="tabpanel" aria-labelledby="custom-tabs-one-settings-tab">
-                                                <div class="table-responsive" >
-                                                    <form>
-                                                        <div id="symptoms_details" >
-                                                            <table class="table table-sm" id="symptoms_details_table"></table>
-                                                        </div>
-
-                                                    </form>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane fade" id="custom-tabs-one-Treatment" role="tabpanel" aria-labelledby="custom-tabs-one-settings-tab">
-                                                <div class="table-responsive" >
-                                                    <form>
-                                                        <div id="treatment_details" >
-                                                            <table class="table table-sm" id="treatment_details_table"></table>
-                                                        </div>
-
-                                                    </form>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane fade" id="custom-tabs-one-OTHERSDETAILS" role="tabpanel" aria-labelledby="custom-tabs-one-settings-tab">
-                                                <div class="table-responsive" >
-                                                    <form>
-                                                        <div id="others_details" >
-                                                             <table class="table table-sm" id="others_details_table"></table>
-                                                        </div>
-
-                                                    </form>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- /.card -->
-                                </div>
+                            <div class="form-control"><label> Profile </label></div>
+                            <div id="user_details_table" >
+                                
                             </div>
-
-
+                            <div class="form-control"><label> Travel History </label></div>
+                            <div id="travel_details_table" >
+                                <!--<table class="table table-sm" id="travel_details_table"></table>-->
+                            </div>
+                            <div class="form-control"><label>Testing Report</label></div>
+                            <div id="testing_details_table" >
+                                <!--<table class="table table-sm" id="testing_details_table"></table> -->
+                            </div>
+                            <div class="form-control"><label>Symptoms </label></div>
+                            <div id="symptoms_details" >
+                                <table class="table table-sm" id="symptoms_details_table"></table>
+                            </div>
+                            <div class="form-control"><label>Treatment </label></div>
+                            <div id="treatment_details" >
+                                <table class="table table-sm" id="treatment_details_table"></table>
+                            </div>
+                            <div class="form-control"><label>Other Details </label></div>
+                            <div id="others_details" >
+                                 <table class="table table-sm" id="others_details_table"></table>
+                            </div>
                         </div>
                     </div><!--/. container-fluid -->
                 </section>
@@ -653,9 +584,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <script>
             $(document).ready(function () {
                 $("#tab_view_div").hide();
-var pat_name = "";
+// var pat_name = "";
 
-load_user_details(pat_name);
+// load_user_details(pat_name);
 
                 $('input[type="radio"]').click(function () {
                     if ($(this).attr('id') == 'yes') {
@@ -665,9 +596,55 @@ load_user_details(pat_name);
                     }
                 });
                 
+            });
+
+  function show_travel_collapse(){
+   // alert();
+     $("#travel_collapse").css("display", "block");
+     $("#travel_collapse_card").removeClass('collapsed-card');
+     $("#profile_collapse").css("display", "none");
+     $("#profile_collapse_card").addClass('collapsed-card');
+
+  }      
+  function show_testing_collapse(){
+   // alert();
+     $("#testing_collapse").css("display", "block");
+     $("#testing_collapse_card").removeClass('collapsed-card');
+     $("#travel_collapse").css("display", "none");
+     $("#travel_collapse_card").addClass('collapsed-card');
+
+  } 
+  function show_symptoms_collapse(){
+   // alert();
+     $("#symptoms_collapse").css("display", "block");
+     $("#symptoms_collapse_card").removeClass('collapsed-card');
+     $("#testing_collapse").css("display", "none");
+     $("#testing_collapse_card").addClass('collapsed-card');
+
+  }
+  function show_treatment_collapse(){
+   // alert();
+     $("#treatment_collapse").css("display", "block");
+     $("#treatment_collapse_card").removeClass('collapsed-card');
+     $("#symptoms_collapse").css("display", "none");
+     $("#symptoms_collapse_card").addClass('collapsed-card');
+
+  }
+  function show_other_collapse(){
+   // alert();
+     $("#other_collapse").css("display", "block");
+     $("#other_collapse_card").removeClass('collapsed-card');
+     $("#treatment_collapse").css("display", "none");
+     $("#treatment_collapse_card").addClass('collapsed-card');
+
+  }   
+function load_data(insert_id){
+//alert(insert_id);
+                
                 $.ajax({
                     type: "POST",
                     url: "<?= base_url("get_patient") ?>",
+                    data : {insert_id : insert_id},
                     dataType: "json",
                     async: false,
                     cache: false,
@@ -690,28 +667,27 @@ load_user_details(pat_name);
                         }
                     },
                 });
-
-            });
-           
-
+}
             $("#other_details").validate({
                 rules: {
-                    remarks: {required: true},
-                    ward: {required: true},
-                    recovered: {required: true},
-                    discharge_date: {required: true},
-                    death: {required: true},
-                    Patient_image: {required: true},
-                    Patient_file: {required: true}
+                    other_pat_id: {required: true},
+                    // remarks: {required: true},
+                    // ward: {required: true},
+                    // recovered: {required: true},
+                    // discharge_date: {required: true},
+                    // death: {required: true},
+                    // Patient_image: {required: true},
+                    // Patient_file: {required: true}
                 },
                 messages: {
-                    remarks: {required: "Feild cannot be empty"},
-                    ward: {required: "Feild cannot be empty"},
-                    recovered: {required: "Feild cannot be empty"},
-                    discharge_date: {required: "Feild cannot be empty"},
-                    death: {required: "Feild cannot be empty"},
-                    Patient_image: {required: "Please Select File"},
-                    Patient_file: {required: "Please Select File"}
+                    other_pat_id: {required: "Feild cannot be empty"},
+                    // remarks: {required: "Feild cannot be empty"},
+                    // ward: {required: "Feild cannot be empty"},
+                    // recovered: {required: "Feild cannot be empty"},
+                    // discharge_date: {required: "Feild cannot be empty"},
+                    // death: {required: "Feild cannot be empty"},
+                    // Patient_image: {required: "Please Select File"},
+                    // Patient_file: {required: "Please Select File"}
                 },
                 errorElement: 'span',
                 submitHandler: function (form) {
@@ -749,18 +725,20 @@ load_user_details(pat_name);
             });
             $("#treatment").validate({
                 rules: {
-                    HCQS: {required: true},
-                    azythromycine: {required: true},
-                    vitamin_c: {required: true},
-                    retro_viral: {required: true},
-                    others: {required: true}
+                    treatment_pat_id: {required: true},
+                //     HCQS: {required: true},
+                //     azythromycine: {required: true},
+                //     vitamin_c: {required: true},
+                //     retro_viral: {required: true},
+                //     others: {required: true}
                 },
                 messages: {
-                    HCQSazythromycine: {required: "Feild cannot be empty"},
-                    azythromycine: {required: "Feild cannot be empty"},
-                    vitamin_c: {required: "Feild cannot be empty"},
-                    retro_viral: {required: "Feild cannot be empty"},
-                    others: {required: "Feild cannot be empty"}
+                    treatment_pat_id: {required: "Feild cannot be empty"},
+                //     HCQSazythromycine: {required: "Feild cannot be empty"},
+                //     azythromycine: {required: "Feild cannot be empty"},
+                //     vitamin_c: {required: "Feild cannot be empty"},
+                //     retro_viral: {required: "Feild cannot be empty"},
+                //     others: {required: "Feild cannot be empty"}
                 },
                 errorElement: 'span',
                 submitHandler: function (form) {
@@ -780,9 +758,8 @@ load_user_details(pat_name);
                             if (success.status === true) {
 
                                 toastr.success(success.body);
-                                //                                              $('#file_uploading').hide();
-
-                                $("#other_details").trigger("reset");
+                                $("#insert_treatment").trigger("reset");
+                                show_other_collapse();
                             } else {
 
                                 toastr.error(success.body);
@@ -821,9 +798,12 @@ load_user_details(pat_name);
                         data: $("#quickForm").serialize(),
                         success: function (success) {
                             success = JSON.parse(success);
+                            
                             if (success.status === true) {
                                 toastr.success(success.body);
-                                 location.reload();
+                                $("#quickForm").trigger("reset");
+                                load_data(success.insertid);
+                                show_travel_collapse();
                             } else {
                                 toastr.success(success.body);
                             }
@@ -844,26 +824,29 @@ load_user_details(pat_name);
             $("#TRAVEL").validate({
 
                 rules: {
-                    visited: {required: true},
-                    country_of_visit: {required: true},
-                    date_arrival: {required: true},
-                    date_contact: {required: true},
-                    unknown_person: {required: true},
-                    positive_patients: {required: true},
-                    doc_visited: {required: true},
-                    tested_cov: {required: true}
+                    travel_pat_id: {required: true},
+                //     visited: {required: true},
+                //     country_of_visit: {required: true},
+                //     date_arrival: {required: true},
+                //     date_contact: {required: true},
+                //     unknown_person: {required: true},
+                //     positive_patients: {required: true},
+                //     doc_visited: {required: true},
+                //     tested_cov: {required: true}
                 },
                 messages: {
-                    visited: {required: "Feild cannot be empty"},
-                    country_of_visit: {required: "Feild cannot be empty"},
-                    date_arrival: {required: "Feild cannot be empty"},
-                    date_contact: {required: "Feild cannot be empty"},
-                    unknown_person: {required: "Feild cannot be empty"},
-                    positive_patients: {required: "Feild cannot be empty"},
-                    doc_visited: {required: "Feild cannot be empty"},
-                    tested_cov: {required: "Select Your Test Result"}
+                    travel_pat_id: {required: "Feild cannot be empty"},
+                //     visited: {required: "Feild cannot be empty"},
+                //     country_of_visit: {required: "Feild cannot be empty"},
+                //     date_arrival: {required: "Feild cannot be empty"},
+                //     date_contact: {required: "Feild cannot be empty"},
+                //     unknown_person: {required: "Feild cannot be empty"},
+                //     positive_patients: {required: "Feild cannot be empty"},
+                //     doc_visited: {required: "Feild cannot be empty"},
+                //     tested_cov: {required: "Select Your Test Result"}
 
-                }, errorElement: "span",
+                }, 
+                errorElement: "span",
                 submitHandler: function (form) {
                     $.ajax({
                         url: '<?= base_url("Welcome/TRAVEL") ?>',
@@ -874,7 +857,8 @@ load_user_details(pat_name);
                             success = JSON.parse(success);
                             if (success.status === true) {
                                 toastr.success(success.body);
-                                $("#quickForm")[0].reset();
+                                $("#TRAVEL").trigger("reset");
+                                 show_testing_collapse();
                             } else {
 
                                 toastr.error(success.body); //toster.error
@@ -889,20 +873,24 @@ load_user_details(pat_name);
             });
             //Testing
             $("#testing").validate({
-                rules: {rapid_testing: {required: true},
-                    cbc: {required: true},
-                    xray: {required: true},
-                    ct_scan: {required: true},
-                    ECG: {required: true}
+                rules: {                    
+                    testing_pat_id: {required: true},
+                    // rapid_testing: {required: true},
+                //     cbc: {required: true},
+                //     xray: {required: true},
+                //     ct_scan: {required: true},
+                //     ECG: {required: true}
                 },
                 messages: {
-                    rapid_testing: {required: "Feild cannot be empty"},
-                    cbc: {required: "Feild cannot be empty"},
-                    xray: {required: "Feild cannot be empty"},
-                    ct_scan: {required: "Feild cannot be empty"},
-                    ECG: {required: "Feild cannot be empty"}
+                    testing_pat_id: {required: "Feild cannot be empty"},
+                //     rapid_testing: {required: "Feild cannot be empty"},
+                //     cbc: {required: "Feild cannot be empty"},
+                //     xray: {required: "Feild cannot be empty"},
+                //     ct_scan: {required: "Feild cannot be empty"},
+                //     ECG: {required: "Feild cannot be empty"}
 
-                }, errorElement: "span",
+                }, 
+                errorElement: "span",
                 submitHandler: function (form) {
                     $.ajax({
                         url: '<?= base_url("Welcome/Testings") ?>',
@@ -913,7 +901,8 @@ load_user_details(pat_name);
                             success = JSON.parse(success);
                             if (success.status === true) {
                                 toastr.success(success.body);
-                                $("#quickForm")[0].reset();
+                                $("#testing").trigger("reset");
+                                 show_symptoms_collapse();
                             } else {
 
                                 toastr.error(success.body); //toster.error
@@ -930,22 +919,24 @@ load_user_details(pat_name);
 
  //Sympotoms
             $("#SYMPTOMS").validate({
-                rules: {symptoms_pat_id: {required: true},
-                    date_start: {required: true},
-                    admitted: {required: true},
-                    sample_collection: {required: true},
-                    res_sample:{required: true},
-                    health_status: {required: true}
+                rules: {
+                    symptoms_pat_id: {required: true},
+                //     date_start: {required: true},
+                //     admitted: {required: true},
+                //     sample_collection: {required: true},
+                //     res_sample:{required: true},
+                //     health_status: {required: true}
                 },
                 messages: {
                     symptoms_pat_id: {required: "Feild cannot be empty"},
-                    date_start: {required: "Feild cannot be empty"},
-                    admitted: {required: "Feild cannot be empty"},
-                    sample_collection: {required: "Feild cannot be empty"},
-                    res_sample: {required: "Feild cannot be empty"},
-                    health_status: {required: "Feild cannot be empty"}
+                //     date_start: {required: "Feild cannot be empty"},
+                //     admitted: {required: "Feild cannot be empty"},
+                //     sample_collection: {required: "Feild cannot be empty"},
+                //     res_sample: {required: "Feild cannot be empty"},
+                //     health_status: {required: "Feild cannot be empty"}
 
-                }, errorElement: "span",
+                }, 
+                errorElement: "span",
                 submitHandler: function (form) {
                     $.ajax({
                         url: '<?= base_url("Welcome/add_symptoms") ?>',
@@ -956,7 +947,8 @@ load_user_details(pat_name);
                             success = JSON.parse(success);
                             if (success.status === true) {
                                 toastr.success(success.body);
-                                $("#SYMPTOMS")[0].reset();
+                                $("#SYMPTOMS").trigger("reset");
+                                 show_treatment_collapse();
                             } else {
 
                                 toastr.error(success.body); //toster.error
@@ -980,6 +972,7 @@ function hide_form(){
 function show_form(){
      $("#create_module").show();
      //$("#create_button").hide();
+       $("#tab_view_div").hide();
 }
         
         function load_travel_details(pat_id){
@@ -1098,8 +1091,9 @@ $.ajax({
         });
         }
         
-        function load_user_details(pat_name)
+        function load_user_details()
     {
+         var pat_name = document.getElementById('search').value;
      var pat_id = "";
         $.ajax({
             type: "post",

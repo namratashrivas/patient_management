@@ -223,7 +223,11 @@ public function update_profile($data_profile, $id) {
 
     public function add_profile($data_profile) {
         $q = $this->db->insert('user_profile', $data_profile);
+
         if ($this->db->affected_rows() === 1) {
+             $insert_id = $this->db->insert_id();
+
+   return  $insert_id;
             return TRUE;
         } else {
             return FALSE;

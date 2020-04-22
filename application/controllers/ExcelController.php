@@ -74,7 +74,13 @@ $query5=$this->db->query("select HCQS,azythromycine,vitamin_c,retro_viral,others
 (select Name from user_profile where user_profile.Patient_ID=user_treatments_report.Patient_ID) as Name from user_treatments_report")->result();
 //$excel_row = 2;
 $first=4;
- $rowex1=1;
+ $rowex1=1; 
+$second=4; 
+    
+ $third = 4;
+   $four=4;  
+    $five=4;
+  $six=4;
 if(count($query)>0)
 {
   
@@ -97,8 +103,7 @@ if(count($query)>0)
   foreach($query2 as $row2)
   {
 
-
-   
+   $excel_row2 = 7;
    // $object->getActiveSheet()->setCellValueByColumnAndRow(($excel_row++),($first), $row->Visited);
    $object->getActiveSheet()->setCellValueByColumnAndRow(($excel_row2++),($second), $row2->Country_of_Visit);
    $object->getActiveSheet()->setCellValueByColumnAndRow(($excel_row2++),($second), $row2->Date_of_arrival);
@@ -108,65 +113,63 @@ if(count($query)>0)
    $object->getActiveSheet()->setCellValueByColumnAndRow(($excel_row2++),($second), '');
    $object->getActiveSheet()->setCellValueByColumnAndRow(($excel_row2++),($second), $row2->doctors_visited);
    $object->getActiveSheet()->setCellValueByColumnAndRow(($excel_row2++),($second), $row2->Result);
-    $first++;
+    $second++;
    
   } 
   foreach($query4 as $row)
   {
-    $first=4;
- 
-    $excel_row = 16;
+    $excel_row3 = 16;
    // $object->getActiveSheet()->setCellValueByColumnAndRow(($excel_row++),($first), $row->Name);
-   $object->getActiveSheet()->setCellValueByColumnAndRow(($excel_row++),($first), $row->Rapid_Testing);
-   $object->getActiveSheet()->setCellValueByColumnAndRow(($excel_row++),($first), $row->CBC);
-   $object->getActiveSheet()->setCellValueByColumnAndRow(($excel_row++),($first), $row->CHESTX_RAY);
-   $object->getActiveSheet()->setCellValueByColumnAndRow(($excel_row++),($first), $row->CTSCAN);
-   $object->getActiveSheet()->setCellValueByColumnAndRow( ($excel_row++),($first),$row->ECG);
-    $first++;
+   $object->getActiveSheet()->setCellValueByColumnAndRow(($excel_row3++),($third), $row->Rapid_Testing);
+   $object->getActiveSheet()->setCellValueByColumnAndRow(($excel_row3++),($third), $row->CBC);
+   $object->getActiveSheet()->setCellValueByColumnAndRow(($excel_row3++),($third), $row->CHESTX_RAY);
+   $object->getActiveSheet()->setCellValueByColumnAndRow(($excel_row3++),($third), $row->CTSCAN);
+   $object->getActiveSheet()->setCellValueByColumnAndRow( ($excel_row3++),($third),$row->ECG);
+    $third++;
    
   }
    foreach($query3 as $row)
   {
-    $first=4;
+   
  
-    $excel_row = 21;
+    $excel_row4 = 21;
    //$object->getActiveSheet()->setCellValueByColumnAndRow($excel_row,$rowex++, $row->Name);
    //$object->getActiveSheet()->setCellValueByColumnAndRow($excel_row,$rowex++, $row->symptoms_seen);
-   $object->getActiveSheet()->setCellValueByColumnAndRow(($excel_row++),($first), $row->symptoms_name);
-   $object->getActiveSheet()->setCellValueByColumnAndRow(28,($first),$row->date_of_starting_of_symptoms);
-   $object->getActiveSheet()->setCellValueByColumnAndRow(29,($first),$row->quarantine_place);
-   $object->getActiveSheet()->setCellValueByColumnAndRow(30,($first), $row->date_of_sample_collection);
-   $object->getActiveSheet()->setCellValueByColumnAndRow(31,($first), $row->result_of_sample_collection);
-   $object->getActiveSheet()->setCellValueByColumnAndRow(32,($first), $row->health_status);
-  $first++;
+   $object->getActiveSheet()->setCellValueByColumnAndRow(($excel_row4++),($four), $row->symptoms_name);
+   $object->getActiveSheet()->setCellValueByColumnAndRow(28,($four),$row->date_of_starting_of_symptoms);
+   $object->getActiveSheet()->setCellValueByColumnAndRow(29,($four),$row->quarantine_place);
+   $object->getActiveSheet()->setCellValueByColumnAndRow(30,($four), $row->date_of_sample_collection);
+   $object->getActiveSheet()->setCellValueByColumnAndRow(31,($four), $row->result_of_sample_collection);
+   $object->getActiveSheet()->setCellValueByColumnAndRow(32,($four), $row->health_status);
+  $four++;
    
   }
   foreach($query5 as $row)
   {
-     $first=4;
+    
  
-    $excel_row = 33;
+    $excel_row5 = 33;
    // $object->getActiveSheet()->setCellValueByColumnAndRow(($excel_row++),($first), $row->Name);
-   $object->getActiveSheet()->setCellValueByColumnAndRow(($excel_row++),($first), $row->HCQS);
-   $object->getActiveSheet()->setCellValueByColumnAndRow(($excel_row++),($first), $row->azythromycine);
-   $object->getActiveSheet()->setCellValueByColumnAndRow(($excel_row++),($first),$row->vitamin_c);
-   $object->getActiveSheet()->setCellValueByColumnAndRow(($excel_row++),($first), $row->retro_viral);
-   $object->getActiveSheet()->setCellValueByColumnAndRow(($excel_row++),($first), $row->others);
-   
+   $object->getActiveSheet()->setCellValueByColumnAndRow(($excel_row5++),($five), $row->HCQS);
+   $object->getActiveSheet()->setCellValueByColumnAndRow(($excel_row5++),($five), $row->azythromycine);
+   $object->getActiveSheet()->setCellValueByColumnAndRow(($excel_row5++),($five),$row->vitamin_c);
+   $object->getActiveSheet()->setCellValueByColumnAndRow(($excel_row5++),($five), $row->retro_viral);
+   $object->getActiveSheet()->setCellValueByColumnAndRow(($excel_row5++),($five), $row->others);
+   $five++;
   }   
    foreach($query1 as $row)
   {
-    $first=4;
-    $excel_row = 38;
+    
+    $excel_row6 = 38;
    //$object->getActiveSheet()->setCellValueByColumnAndRow(($excel_row++),($first), $row->Name);
-   $object->getActiveSheet()->setCellValueByColumnAndRow(($excel_row++),($first),$row->REMARK);
-   $object->getActiveSheet()->setCellValueByColumnAndRow(($excel_row++),($first), $row->WARD);
-   $object->getActiveSheet()->setCellValueByColumnAndRow(($excel_row++),($first),$row->RECOVERED);
-   $object->getActiveSheet()->setCellValueByColumnAndRow(($excel_row++),($first), $row->DISCHARGE_DATE);
-   $object->getActiveSheet()->setCellValueByColumnAndRow(($excel_row++),($first), $row->PATIENT_DEATH);
-   $object->getActiveSheet()->setCellValueByColumnAndRow(($excel_row++),($first), $row->Patient_image);
-   $object->getActiveSheet()->setCellValueByColumnAndRow(($excel_row++),($first),$row->Patents_files);
-   $first++;
+   $object->getActiveSheet()->setCellValueByColumnAndRow(($excel_row6++),($six),$row->REMARK);
+   $object->getActiveSheet()->setCellValueByColumnAndRow(($excel_row6++),($six), $row->WARD);
+   $object->getActiveSheet()->setCellValueByColumnAndRow(($excel_row6++),($six),$row->RECOVERED);
+   $object->getActiveSheet()->setCellValueByColumnAndRow(($excel_row6++),($six), $row->DISCHARGE_DATE);
+   $object->getActiveSheet()->setCellValueByColumnAndRow(($excel_row6++),($six), $row->PATIENT_DEATH);
+   $object->getActiveSheet()->setCellValueByColumnAndRow(($excel_row6++),($six), $row->Patient_image);
+   $object->getActiveSheet()->setCellValueByColumnAndRow(($excel_row6++),($six),$row->Patents_files);
+   $six++;
   }
   $object->getActiveSheet()->setCellValue('A1', 'SNo.');
    $object->getActiveSheet()->setCellValue('B1', "Name");

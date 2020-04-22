@@ -128,8 +128,8 @@ $death=$this->input->post_get("death");
                         echo json_encode($response);
     }
     public function get_patient() {
-        
-        $get_patient = $this->File_modal->get_all_patient();
+         $insert_id=$this->input->post_get("insert_id");
+        $get_patient = $this->File_modal->get_all_patient($insert_id);
  $data = "";
         if ($get_patient != NULL) {
            

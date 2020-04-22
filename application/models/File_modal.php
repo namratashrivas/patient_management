@@ -99,8 +99,8 @@ class File_modal extends CI_Model {
         }
     }
 
-    public function get_all_patient() { //function to get all patient id wise
-        $query = $this->db->query("SELECT * FROM `user_profile`");
+    public function get_all_patient($insert_id) { //function to get all patient id wise
+        $query = $this->db->query("SELECT * FROM `user_profile` Where `Patient_ID` = '$insert_id'");
 //        echo $this->db->last_query();
         if ($query->num_rows() > 0) {
             $result = $query->result();

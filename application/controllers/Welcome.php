@@ -663,11 +663,7 @@ public function update_user_details() {
     }
       public function get_all_user_details() { //done by pooja lote
         if (!empty($this->input->get_post('pat_name'))) {
-          $where_data = array('Name' => $this->input->get_post('pat_name'));
-
-        } else {
-         $where_data = array();
-       } 
+          $where_data = array('Name' => $this->input->get_post('pat_name'));       
        $data = array('*');
        $result = $this->User_model->LoadUser($data, $where_data);
             //echo $this->db->last_query();
@@ -720,7 +716,12 @@ public function update_user_details() {
        $response['status'] = 200;
          $response['body'] = $data;
          $response['pat_id'] = $Patient_ID;
-     } else {
+     }  
+     else {
+           $response['status'] = 201;
+      $response['body'] = "no data found";
+       }
+    } else {
       $response['status'] = 201;
       $response['body'] = "no data found";
     }
@@ -740,9 +741,7 @@ $where_for_loop_data .="Patient_ID =".$array_pat[$i]. " OR ";
            $where_data = rtrim($where_for_loop_data," OR ");
       //$where_data = array();
 echo $this->db->last_query();
-     } else {
-       $where_data = array();
-     } 
+    
      $data = array('*');
      $result = $this->User_model->LoadTravel($data, $where_data);
             //echo $this->db->last_query();
@@ -813,6 +812,10 @@ echo $this->db->last_query();
       $response['status'] = 201;
       $response['body'] = "no data found";
     }
+} else {
+      $response['status'] = 201;
+      $response['body'] = "no data found";
+    }
 
     echo json_encode($response);
   }  
@@ -828,9 +831,7 @@ $where_for_loop_data .="Patient_ID =".$array_pat[$i]. " OR ";
         }
            $where_data = rtrim($where_for_loop_data," OR ");
 
-     } else {
-       $where_data = array();
-     } 
+     
      $data = array('*');
      $result = $this->User_model->LoadTesting($data, $where_data);
             //echo $this->db->last_query();
@@ -885,6 +886,10 @@ $where_for_loop_data .="Patient_ID =".$array_pat[$i]. " OR ";
       $response['status'] = 201;
       $response['body'] = "no data found";
     }
+      } else {
+      $response['status'] = 201;
+      $response['body'] = "no data found";
+    }
     
     echo json_encode($response);
   }
@@ -900,9 +905,7 @@ $where_for_loop_data .="Patient_ID =".$array_pat[$i]. " OR ";
         }
            $where_data = rtrim($where_for_loop_data," OR ");
 
-     } else {
-       $where_data = array();
-     } 
+     
      $data = array('*');
      $result = $this->User_model->LoadSymptoms($data, $where_data);
             
@@ -966,6 +969,9 @@ $where_for_loop_data .="Patient_ID =".$array_pat[$i]. " OR ";
     } else {
       $response['status'] = 201;
       $response['body'] = "no data found";
+    }} else {
+      $response['status'] = 201;
+      $response['body'] = "no data found";
     }
     
     echo json_encode($response);
@@ -981,9 +987,7 @@ $where_for_loop_data .="Patient_ID =".$array_pat[$i]. " OR ";
         }
            $where_data = rtrim($where_for_loop_data," OR ");
 
-     } else {
-       $where_data = array();
-     } 
+    
      $data = array('*');
      $result = $this->User_model->LoadTreatment($data, $where_data);
             
@@ -1037,6 +1041,9 @@ $where_for_loop_data .="Patient_ID =".$array_pat[$i]. " OR ";
     } else {
       $response['status'] = 201;
       $response['body'] = "no data found";
+    } } else {
+      $response['status'] = 201;
+      $response['body'] = "no data found";
     }
     
     echo json_encode($response);
@@ -1052,9 +1059,7 @@ $where_for_loop_data .="Patient_ID =".$array_pat[$i]. " OR ";
         }
            $where_data = rtrim($where_for_loop_data," OR ");
 
-     } else {
-       $where_data = array();
-     } 
+    
      $data = array('*');
      $result = $this->User_model->LoadOther($data, $where_data);
             
@@ -1119,6 +1124,10 @@ $where_for_loop_data .="Patient_ID =".$array_pat[$i]. " OR ";
       $response['status'] = 201;
       $response['body'] = "no data found";
     }
+     } else {
+      $response['status'] = 201;
+      $response['body'] = "no data found";
+    }
     
     echo json_encode($response);
   }
@@ -1134,8 +1143,10 @@ $where_for_loop_data .="Patient_ID =".$array_pat[$i]. " OR ";
 //             if(){}else{}
    $data_profile  = array(
      "Name" =>$name,"Age"=>$age,"Sex"=>$sex,"District"=>$District,"Address"=>$address,"Contact_Number"=>$contact_number,"created_on"=>$created_on    );
-   if ($this->User_model->add_profile($data_profile)) {
-    $response['profile'] = $data_profile;
+   if ( $insertid  = $this->User_model->add_profile($data_profile)) {
+    
+   // echo $insertid;
+    $response['insertid'] = $insertid;
     $response["status"] = true;
     $response["body"] = "Profile Created Successfully";
   } else {
