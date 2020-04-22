@@ -31,10 +31,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="wrapper">
             <!-- Navbar -->
             <nav class="mainheader navbar navbar-expand navbar-white navbar-light">
-                <h2>COVID -19<br>
-                    
-                    <em style="font-size:19px;">Example</em></h2>
-
+                <h2>COVID -19
+                    <em style="font-size:19px;"><?php if (!is_null($this->session->user_session)) { echo $this->session->user_session->username; } else { }?></em></h2>
             
             <!-- /.navbar -->
 <ul class="navbar-nav ml-auto">
@@ -578,7 +576,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <!--<table class="table table-sm" id="travel_details_table"></table>-->
                             </div>
                             <div class="form-control"><label>Testing Report</label></div>
-                            <div id="testing_details_table" >
+                            <div id="testing_details" >
                                 <table class="table table-sm" id="testing_details_table"></table> 
                             </div>
                             <div class="form-control"><label>Symptoms </label></div>
