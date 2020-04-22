@@ -24,11 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         .error{
             color:red;
         }
-        label{
-                font-size: 12px !important;
 
-        }
-        
     </style>
 
     <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -41,28 +37,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
             <!-- Content Wrapper. Contains page content -->
-            <div class="content-wrapper" style="    margin-left: 0px;    margin-top: 1px;">
+            <div class="content-wrapper" style=" margin-left: 0px;    margin-top: 1px;">
                 <!-- Content Header (Page header) -->
                 <div class="content-header">
                     <div class="container-fluid">
                         <div class="row mb-2">
-                            <div class="col-sm-6">
-                                <form class="form-inline ml-3">
-                                    <div class="input-group input-group-sm">
-                                    <div class="clo-md-12">
-                                       <input class="form-control" onkeyup="hide_form(),load_user_details(this.value)" id="search" name="search" type="search" style="width: 500px; height: 50px" placeholder="Search Patient Name...." aria-label="Search">
-                                      </div> 
-                                    </div>
-                                   
-                                </form>
-
+                            <div class="col-sm-6">                                
+                                <div class="col-md-12">
+                                   <input class="form-control" onkeyup="hide_form(),load_user_details(this.value)" id="search" name="search" type="search" style="width: 300px; height: 50px" placeholder="Search Patient By Name" aria-label="Search">
+                                </div>                                 
                             </div>
-                            <div class="col-sm-6">
-                                      <button type="button" id="create_button" onclick="show_form()" name="create_button" style="display: none" class="btn btn-primary">Create</button>
-                                    
+                        </div>
+                        <div class="">
+                            <div class="col-md-6">
+                                <button type="button" id="create_button" onclick="show_form()" name="create_button" style="display:block" class="btn btn-primary">Create</button>
                             </div>
-                            <!-- /.col -->
-                            <!-- /.col -->
+                            <div class="col-md-6">                            
+                            <form class="" method="post" action="<?php echo base_url(); ?>ExcelController/action">
+                                    <button type="submit" name="export" class="btn btn-success"> Export Data</button>
+                                 </form>  
+                            </div>
                         </div><!-- /.row -->
                     </div><!-- /.container-fluid -->
                 </div>
@@ -87,49 +81,54 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <div class="row">
 
                                             <div class="card-body">
-                                                <form role="form" id="quickForm" name="quickForm" method="POST" novalidate="novalidate">
-                                                    <div class="form-group">
-                                                        <label for="Name">Name</label>
-                                                        <input type="text" name="name" class="form-control " id="name" placeholder="Enter Name" 
-                                                               >
-                                                      <!--<span id="name-error" class="error invalid-feedback"></span>-->
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="Age">Age</label>
-                                                        <input type="number" name="age" class="form-control " id="age" placeholder="Enter Age" >
-                                                      <!--<span id="age-error" class="error invalid-feedback"></span>-->
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label> Select Gender</label>
-                                                        <select class="form-control" id="sex" name="sex">
+                                                
+                                        
+                                                    
+                                                    
+                                        <form class="form-horizontal" role="form" id="quickForm" name="quickForm" method="POST" novalidate="novalidate">            
+                                                
+                                                <table class="table table-sm" id="">
+                                                    <tbody><tr>
+       
+        <td><strong>Name</strong></td>
+        <td><input type="text" class="form-control" name="name" id="name" placeholder="Enter Name"></td>
+        </tr>
+        <tr>
+        
+        <td><strong>Age</strong></td>
+        <td><input type="number" name="age" class="form-control " id="age" placeholder="Enter Age" ></td>
+        </tr>
+        <tr>
+        
+        <td><strong>Select Gender</strong></td>
+        <td><select class="form-control" id="sex" name="sex">
                                                             <option>Select Gender</option>
                                                             <option value="Male">Male</option>
                                                             <option value="Female">Female</option>
-
-
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="District">District</label>
-                                                        <input type="text" name="District" class="form-control " id="District" placeholder="Enter District" >
-                                                      <!--<span id="District-error" class="error invalid-feedback"></span>-->
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="Address">Address</label>
-                                                        <input type="text" name="address" class="form-control " id="address" placeholder="Enter Address" >
-                                    <!--                  <span id="address-error" class="error invalid-feedback"></span>-->
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="Address">Contact Number</label>
-                                                        <input type="number" name="contact_number" class="form-control " id="contact_number" placeholder="Enter Contact Number" >
-                                                      <!--<span id="contact_number-error" class="error invalid-feedback"></span>-->
-                                                    </div>
-                                                    <div class="card-footer">
-                                                        <button type="submit" class="btn btn-primary">Submit</button>
-                                                    </div>
-
-                                                </form>
-
+                                                        </select></td>
+        </tr>
+        <tr>
+        
+        <td><strong>District</strong></td>
+        <td> <input type="text" name="District" class="form-control " id="District" placeholder="Enter District" ></td>
+        </tr>
+        <tr>
+        
+        <td><strong>Address</strong></td>
+        <td> <input type="text" name="address" class="form-control " id="address" placeholder="Enter Address" ></td>
+        </tr>
+        <tr>
+        
+        <td><strong>Contact Number</strong></td>
+        <td><input type="number" name="contact_number" class="form-control " id="contact_number" placeholder="Enter Contact Number" ></td>
+        </tr>
+                             
+        </tbody>
+                                                </table>
+ <div class="card-footer">
+                 <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
                                             </div>
                                         </div>
                                     </div>
@@ -163,8 +162,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                     </div>   
                                                     <div class="form-group">
                                                         <label for="Visited">Visited</label>
-                                                        <input type="text" name="visited" class="form-control " id="visited" 
-                                                               placeholder="Enter Visited Place"  >
+                                                        <input type="text" name="visited" class="form-control " id="visited" placeholder="Enter Visited Place"  >
                                                       <!--<span id="visited-error" class="error invalid-feedback"></span>-->
                                                     </div>
                                                     <div class="form-group">
@@ -243,41 +241,45 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <div class="row">
 
                                             <div class="card-body">
-                                                <form role="form" id="testing"  name="testing"novalidate="novalidate">
-                                                    <div class="form-group">
-                                                        <label>Select Patient</label>
-                                                        <select  id="testing_pat_id" name="testing_pat_id" class=" form-control "></select>
-                                                    </div> 
-                                                    <div class="form-group">
-                                                        <label for="Rapid Testing">Rapid Testing</label>
-                                                        <input type="text" name="rapid_testing" class="form-control " id="rapid_testing" 
+                                                <form class="form-horizontal" role="form" id="testing"  name="testing"novalidate="novalidate">
+                                                     <table class="table table-sm">
+                                                         <tbody>
+                                                            <tr>
+                                                                <td><strong>Select Patient</strong></td>
+                                                                <td><select  id="testing_pat_id" name="testing_pat_id" class=" form-control "></select></td>
+                                                            </tr>
+                                                            <tr>                                                  
+                                                                <td><strong>Rapid Testing</strong></td>
+                                                                <td><input type="text" name="rapid_testing" class="form-control " id="rapid_testing" 
                                                                placeholder="Enter Rapid Testing"  >
-                                                        <span id="rapid_testing-error" class="error invalid-feedback"></span></div>
-                                                    <div class="form-group">
-                                                        <label for="CBC">CBC</label>
-                                                        <input type="text" name="cbc" class="form-control " id="cbc" placeholder="Enter CBC" >
-                                                        <span id="cbc-error" class="error invalid-feedback"></span></div>
-
-                                                    <div class="form-group">
-                                                        <label for="CHEST X-RAY">CHEST X-RAY</label>
-                                                        <input type="text" name="xray" class="form-control " id="xray" placeholder="Enter CHEST X-RAY" >
-                                                        <span id="x-ray-error" class="error invalid-feedback"></span></div>
-
-                                                    <div class="form-group">
-                                                        <label for="CT- SCAN">CT- SCAN</label>
-                                                        <input type="text" name="ct_scan" class="form-control " id="ct_scan" placeholder="Enter CT-SCAN" >
-                                                        <span id="date_arrival-error" class="error invalid-feedback"></span></div>
-                                                    <div class="form-group">
-                                                        <label for="ECG">ECG</label>
-                                                        <input type="text" name="ECG" class="form-control " id="ECG" placeholder="Enter ECG" >
-                                                        <span id="ECG-error" class="error invalid-feedback"></span></div>
-
-
-
+                                                        <span id="rapid_testing-error" class="error invalid-feedback"></span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><strong>CBC</strong></td>
+                                                                <td><input type="text" name="cbc" class="form-control " id="cbc" placeholder="Enter CBC" >
+                                                        <span id="cbc-error" class="error invalid-feedback"></span></td>
+                                                            </tr>
+                                                            <tr>
+                                                        
+                                                        <td><strong>CHEST X-RAY</strong></td>
+                                                        <td><input type="text" name="xray" class="form-control " id="xray" placeholder="Enter CHEST X-RAY" >
+                                                        <span id="x-ray-error" class="error invalid-feedback"></span></td>
+                                                        </tr>
+                                                        <tr>                                                        
+                                                        <td><strong>CT- SCAN</strong></td>
+                                                        <td><input type="text" name="ct_scan" class="form-control " id="ct_scan" placeholder="Enter CT-SCAN" >
+                                                        <span id="date_arrival-error" class="error invalid-feedback"></span></td>
+                                                        </tr>
+                                                        <tr>                                                        
+                                                        <td><strong>ECG</strong></td>
+                                                        <td><input type="text" name="ECG" class="form-control " id="ECG" placeholder="Enter ECG" >
+                                                        <span id="ECG-error" class="error invalid-feedback"></span></td>
+                                                        </tr>                    
+                                                        </tbody>
+                                                     </table>
                                                     <div class="card-footer">
                                                         <button type="submit" class="btn btn-primary">Submit</button>
                                                     </div>
-
                                                 </form>
 
                                             </div>
@@ -310,28 +312,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                         
                                                         <select  id="symptoms_pat_id" name="symptoms_pat_id" class=" form-control "></select>
                                                     </div> 
-                                                    <div class="form-group">
-                                                        <label for=" symptoms ">Symptoms </label>
-
-                                                        <div class="custom-control custom-radio col-md-2">
-                                                            <input type="radio" id="yes" name="yes" value="yes">
-                                                            <label for="male">Yes</label>
-                                                            <input type="radio" id="no" name="yes" value="no" checked="">
-                                                            <label for="female">No</label> 
-
-                                                        </div>
-                                                        <div class="custom-control custom-radio col-md-2">
-
-                                                        </div>
-                                                        <div id="myDIV" style="display:none; ">
-                                                            <div class="custom-control custom-radio col-md-6">
-                                                                <input class="" type="checkbox" id="COUGH" name="sys[]" value="COUGH"><label>COUGH</label>
-                                                                <input class="" type="checkbox" id="FEVER" name="sys[]" value="FEVER"><label>FEVER</label>
-                                                                <input class="" type="checkbox" id="LOSS_OF_SMELL"name="sys[]" value="LOSS_OF_SMELL"><label>LOSS OF SMELL</label>
-                                                                <input class="" type="checkbox" id="DIARRHOES" name="sys[]" value="DIARRHOES"><label>DIARRHOES</label>
-                                                                <input class="" type="Checkbox" id="LOSS_OF_TASTE"  name="sys[]" value="LOSS_OF_TASTE"><label>LOSS OF TASTE</label>
-                                                            </div>
-                                                        </div>  
+                                                     <div class="form-group" style="margin-bottom:unset !important;">
+                                                        <label for=" symptoms ">Symptoms:  
+                                                            <input type="radio" id="yes" name="yes" value="yes">&nbsp;<label for="male">Yes</label>&nbsp;&nbsp;<input type="radio" id="no" name="yes" value="no" checked="">&nbsp;<label for="female">No</label>          
+                                                    </label>
+                                                    </div> 
+                                                    <div class="form-group" id="myDIV" style="display:none; ">
+                                                        <input class="" type="checkbox" id="COUGH" name="sys[]" value="Cough">&nbsp;<label>Cough</label>&nbsp;&nbsp;
+                                                        <input class="" type="checkbox" id="FEVER" name="sys[]" value="Fever">&nbsp;<label>Fever</label>
+                                                        &nbsp;&nbsp;<input class="" type="checkbox" id="LOSS_OF_SMELL"name="sys[]" value="Loss of smell">&nbsp;<label>Loss of smell</label>&nbsp;&nbsp;
+                                                        <input class="" type="checkbox" id="DIARRHOES" name="sys[]" value="Diarrhoea">&nbsp;<label>Diarrhoea</label>&nbsp;&nbsp;<input class="" type="Checkbox" id="LOSS_OF_TASTE"  name="sys[]" value="Loss of taste">&nbsp;<label>Loss of taste</label>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="date of starting of symptoms ">Date of starting of symptoms </label>
@@ -389,34 +379,41 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <div class="row">
 
                                             <div class="card-body">
-                                                <form role="form" id="treatment"  name="treatment" novalidate="novalidate">
-
-                                                    <div class="form-group">
-                                                        <label>Select Patient</label>
-                                                        <select  id="treatment_pat_id" name="treatment_pat_id" class=" form-control "></select>
-                                                    </div> 
-                                                    <div class="form-group">
-                                                        <label for="HCQS">HCQS</label>
-                                                        <input type="text" name="HCQS" class="form-control" id="HCQS"placeholder="EnterHCQS"  >
-                                                        <span id="HCQS-error" class="error invalid-feedback"></span></div>
-                                                    <div class="form-group">
-                                                        <label for="AZYTHROMYCINE">AZYTHROMYCINE </label>
-                                                        <input type="text" name="azythromycine" class="form-control " id="azythromycine" placeholder="Enter AZYTHROMYCINE " >
-                                                        <span id="azythromycine-error" class="error invalid-feedback"></span></div>
-
-                                                    <div class="form-group">
-                                                        <label for="VITAMIN C">VITAMIN C </label>
-                                                        <input type="text" name="vitamin_c" class="form-control " id="vitamin_c" placeholder="Enter VITAMIN C " >
-                                                        <span id="VITAMIN_C-error" class="error invalid-feedback"></span></div>
-
-                                                    <div class="form-group">
-                                                        <label for="RETRO VIRAL">RETRO VIRAL</label>
-                                                        <input type="text" name="retro_viral" class="form-control " id="retro_viral" placeholder="Enter RETRO VIRAL" >
-                                                        <span id="retro_viral-error" class="error invalid-feedback"></span></div>
-                                                    <div class="form-group">
-                                                        <label for="OTHERS">OTHERS</label>
-                                                        <input type="text" name="others" class="form-control " id="others" placeholder="Enter OTHERS" >
-                                                        <span id="others-error" class="error invalid-feedback"></span></div>
+                                                <form class="form-horizontal" role="form" id="treatment"  name="treatment" novalidate="novalidate">
+<table class="table table-sm" >
+    <tbody>
+        <tr>       
+        <td><strong>Select Patient</strong></td>
+        <td><select  id="treatment_pat_id" name="treatment_pat_id" class=" form-control "></select></td>
+        </tr>
+        <tr>
+        <td><strong>HCQS</strong></td>
+        <td><input type="text" name="HCQS" class="form-control" id="HCQS"placeholder="EnterHCQS"  >
+                                                        <span id="HCQS-error" class="error invalid-feedback"></span></td>
+        </tr>
+        <tr>
+        <td><strong>AZYTHROMYCINE</strong></td>
+        <td><input type="text" name="azythromycine" class="form-control " id="azythromycine" placeholder="Enter AZYTHROMYCINE " >
+                                                        <span id="azythromycine-error" class="error invalid-feedback"></span></td>
+        </tr>
+        <tr>
+        <td><strong>VITAMIN C</strong></td>
+        <td><input type="text" name="vitamin_c" class="form-control " id="vitamin_c" placeholder="Enter VITAMIN C " >
+                                                        <span id="VITAMIN_C-error" class="error invalid-feedback"></span></td>
+        </tr>
+        <tr>
+        <td><strong>RETRO VIRAL</strong></td>
+        <td><input type="text" name="retro_viral" class="form-control " id="retro_viral" placeholder="Enter RETRO VIRAL" >
+                                                        <span id="retro_viral-error" class="error invalid-feedback"></span></td>
+        </tr>
+        <tr>
+        <td><strong>OTHERS</strong></td>
+        <td><input type="text" name="others" class="form-control " id="others" placeholder="Enter OTHERS" >
+                                                        <span id="others-error" class="error invalid-feedback"></span></td>
+        </tr>                       
+        </tbody>
+</table>
+                                                    
                                                     <div class="card-footer">
                                                         <button type="submit" class="btn btn-primary">Submit</button>
                                                     </div>
@@ -451,46 +448,52 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <div class="row">
 
                                             <div class="card-body">
-                                                <form role="form" id="other_details"  name="other_details" novalidate="novalidate">
+                                                <form role="form" id="other_details" class="form-horizontal" name="other_details" novalidate="novalidate">
 
-
-                                                    <div class="form-group">
-                                                        <label>Select Patient</label>
-                                                        <select  id="other_pat_id" name="other_pat_id" class=" form-control "></select>
-                                                    </div> 
-                                                    <div class="form-group">
-                                                        <label for="Remarks">Remarks</label>
-                                                        <input type="text" name="remarks" class="form-control " id="remarks" 
-                                                               placeholder="Enter Remarks"  >
-                                                        <span id="remarks-error" class="error invalid-feedback"></span></div>
-                                                    <div class="form-group">
-                                                        <label for="Ward">Ward</label>
-                                                        <input type="text" name="ward" class="form-control " id="ward" 
-                                                               placeholder="Enter Remarks"  >
-                                                        <span id="ward-error" class="error invalid-feedback"></span></div>
-                                                    <div class="form-group">
-                                                        <label for="recovered">Recovered </label>
-                                                        <input type="text" name="recovered" class="form-control " id="recovered" placeholder="Enter Recovered " >
-                                                        <span id="recovered-error" class="error invalid-feedback"></span></div>
-
-                                                    <div class="form-group">
-                                                        <label for="discharge date">DISCHARGE DATE</label>
-                                                        <input type="date" name="discharge_date" class="form-control " id="discharge_date" placeholder="Enter  Discharge Date " >
-                                                        <span id="VITAMINE_C-error" class="error invalid-feedback"></span></div>
-
-                                                    <div class="form-group">
-                                                        <label for="RETRO VIRAL">PATIENT DEATH</label>
-                                                        <input type="text" name="death" class="form-control " id="death" placeholder="Enter PATIENT DEATH" >
-                                                        <span id="retro_viral-error" class="error invalid-feedback"></span></div>
-                                                    <div class="form-group">
-                                                        <label for="Patient image">Patient image</label>
-                                                        <input type="file" name="Patient_image" class="form-control " id="Patient_image" placeholder="Enter Patient Image" >
-                                                        <span id="Patient_image-error" class="error invalid-feedback"></span></div>
-
-                                                    <div class="form-group">
-                                                        <label for="Patient file">Patient file</label>
-                                                        <input type="file" name="Patient_file" class="form-control " id="Patient_file" placeholder="Enter Patient File" >
-                                                        <span id="Patient_file-error" class="error invalid-feedback"></span></div>
+<table class="table table-sm" >
+    <tbody>
+        <tr>
+        <td><strong>Select Patient</strong></td>
+        <td><select  id="other_pat_id" name="other_pat_id" class=" form-control "></select></td>
+        </tr>
+        <tr>
+        <td><strong>Remarks</strong></td>
+        <td><input type="text" name="remarks" class="form-control " id="remarks" placeholder="Enter Remarks"  >
+                                                        <span id="remarks-error" class="error invalid-feedback"></span></td>
+        </tr>
+        <tr>
+        <td><strong>Ward</strong></td>
+        <td><input type="text" name="ward" class="form-control " id="ward" placeholder="Enter Ward"  >
+                                                        <span id="ward-error" class="error invalid-feedback"></span></td>
+        </tr>
+        <tr>
+        <td><strong>Recovered</strong></td>
+        <td><input type="text" name="recovered" class="form-control " id="recovered" placeholder="Enter Recovered " >
+                                                        <span id="recovered-error" class="error invalid-feedback"></span></td>
+        </tr>
+        <tr>
+        <td><strong>DISCHARGE DATE</strong></td>
+        <td><input type="date" name="discharge_date" class="form-control " id="discharge_date" placeholder="Enter  Discharge Date " >
+                                                        <span id="VITAMINE_C-error" class="error invalid-feedback"></span></td>
+        </tr>
+        <tr>
+        <td><strong>PATIENT DEATH</strong></td>
+        <td><input type="text" name="death" class="form-control " id="death" placeholder="Enter PATIENT DEATH" >
+                                                        <span id="retro_viral-error" class="error invalid-feedback"></span></td>
+        </tr>
+        <tr>
+        <td><strong>Patient image</strong></td>
+        <td><input type="file" name="Patient_image" class="form-control " id="Patient_image" placeholder="Enter Patient Image" >
+                                                        <span id="Patient_image-error" class="error invalid-feedback"></span></td>
+        </tr>
+        <tr>
+        <td><strong>Patient file</strong></td>
+        <td><input type="file" name="Patient_file" class="form-control " id="Patient_file" placeholder="Enter Patient File" >
+                                                        <span id="Patient_file-error" class="error invalid-feedback"></span></td>
+        </tr>                       
+        </tbody>
+</table>
+                                                    
                                                     <div class="card-footer">
                                                         <button type="submit" class="btn btn-primary">Submit</button>
                                                     </div>
@@ -539,8 +542,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <div class="tab-pane fade active show" id="custom-tabs-one-home" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
                                                 <div class="table-responsive" >
                                                     <form>
-                                                        <div id="user_details" >
-                                                            <table class="table table-sm" id="user_details_table"></table>
+                                                        <div id="user_details_table" >
+                                                            
                                                         </div>
                                                     </form>
                                                 </div>
@@ -650,6 +653,7 @@ load_user_details(pat_name);
                         $('#myDIV').hide();
                     }
                 });
+                
                 $.ajax({
                     type: "POST",
                     url: "<?= base_url("get_patient") ?>",
@@ -960,11 +964,11 @@ function hide_form(){
      $("#create_module").hide();
      $("#create_button").show();
      $("#tab_view_div").show();
-     
+
 }
 function show_form(){
      $("#create_module").show();
-     $("#create_button").hide();
+     //$("#create_button").hide();
 }
         
         function load_travel_details(pat_id){
@@ -1117,6 +1121,359 @@ load_other_details(pat_id);
         });
     
 
+    }
+
+    function edit_user(pat_id){
+        //alert(pat_id);
+ $.ajax({
+            type: "post",
+            url: "<?php echo base_url('change_user_details') ?>",
+            data: {pat_id: pat_id},
+            dataType: "json",
+            success: function (result) {
+                if (result.status == 200) {
+                    var data = result.body;
+                    $('#user_'+pat_id).html(data); 
+                 
+                } else {
+                    $('#user_'+pat_id).html('');
+
+                }
+            },
+            error: function (error) {
+            }
+        });
+    
+    }
+    function edit_travel(pat_id){
+        //alert(pat_id);
+ $.ajax({
+            type: "post",
+            url: "<?php echo base_url('change_travel_details') ?>",
+            data: {pat_id: pat_id},
+            dataType: "json",
+            success: function (result) {
+                if (result.status == 200) {
+                    var data = result.body;
+                    $('#travel_'+pat_id).html(data); 
+                 
+                } else {
+                    $('#travel_'+pat_id).html('');
+
+                }
+            },
+            error: function (error) {
+            }
+        });
+    
+    }
+    function edit_testing(pat_id){
+        //alert(pat_id);
+ $.ajax({
+            type: "post",
+            url: "<?php echo base_url('change_testing_details') ?>",
+            data: {pat_id: pat_id},
+            dataType: "json",
+            success: function (result) {
+                if (result.status == 200) {
+                    var data = result.body;
+                    $('#testing_'+pat_id).html(data); 
+                 
+                } else {
+                    $('#testing_'+pat_id).html('');
+
+                }
+            },
+            error: function (error) {
+            }
+        });
+    
+    }
+    function edit_symptoms(pat_id){
+        //alert(pat_id);
+ $.ajax({
+            type: "post",
+            url: "<?php echo base_url('change_symptoms_details') ?>",
+            data: {pat_id: pat_id},
+            dataType: "json",
+            success: function (result) {
+                if (result.status == 200) {
+                    var data = result.body;
+                    $('#symptoms_'+pat_id).html(data); 
+                 
+                } else {
+                    $('#symptoms_'+pat_id).html('');
+
+                }
+            },
+            error: function (error) {
+            }
+        });
+    
+    }
+     function edit_treatment(pat_id){
+        //alert(pat_id);
+ $.ajax({
+            type: "post",
+            url: "<?php echo base_url('change_treatment_details') ?>",
+            data: {pat_id: pat_id},
+            dataType: "json",
+            success: function (result) {
+                if (result.status == 200) {
+                    var data = result.body;
+                    $('#treatment_'+pat_id).html(data); 
+                 
+                } else {
+                    $('#treatment_'+pat_id).html('');
+
+                }
+            },
+            error: function (error) {
+            }
+        });
+    
+    }
+    function edit_other(pat_id){
+        //alert(pat_id);
+ $.ajax({
+            type: "post",
+            url: "<?php echo base_url('change_other_details') ?>",
+            data: {pat_id: pat_id},
+            dataType: "json",
+            success: function (result) {
+                if (result.status == 200) {
+                    var data = result.body;
+                    $('#other_'+pat_id).html(data); 
+                 
+                } else {
+                    $('#other_'+pat_id).html('');
+
+                }
+            },
+            error: function (error) {
+            }
+        });
+    
+    }
+    function Save_user(pat_id){
+    var pat_name = document.getElementById('search').value;
+   // alert(pat_name);
+    var hidden_id = document.getElementById('hidden_id'+pat_id).value;
+    var edit_name = document.getElementById('edit_name'+pat_id).value;
+    var edit_age = document.getElementById('edit_age'+pat_id).value;
+    var edit_sex = document.getElementById('edit_sex'+pat_id).value;
+    var edit_District = document.getElementById('edit_District'+pat_id).value;
+    var edit_address = document.getElementById('edit_address'+pat_id).value;
+    var edit_contact_number = document.getElementById('edit_contact_number'+pat_id).value;
+    //alert (hidden_id);
+                    //console.log(form_data);
+                    $.ajax({
+                        type: "POST",
+                        url: "<?= base_url("update_user_details") ?>",
+                        data: {hidden_id: hidden_id,edit_name:edit_name, edit_age:edit_age, edit_sex:edit_sex, edit_District:edit_District, edit_address:edit_address, edit_contact_number:edit_contact_number},
+                        success: function (success) {
+                            success = JSON.parse(success);
+                            if (success.status === true) {
+
+                                toastr.success(success.body);
+                               load_user_details(pat_name);
+                            } else {
+
+                                toastr.error(success.body);
+                                load_user_details(pat_name);
+                            }
+                        },
+                        error: function (error) {
+
+                            toastr.error("something went to wrong");
+load_user_details(pat_name);
+                        }
+                    });
+    
+    }
+    function Save_travel(pat_id){
+    var pat_name = document.getElementById('search').value;
+   // alert(pat_name);
+    var hidden_trav_id = document.getElementById('hidden_trav_id'+pat_id).value;
+    var edit_visited = document.getElementById('edit_visited'+pat_id).value;
+    var edit_country_of_visit = document.getElementById('edit_country_of_visit'+pat_id).value;
+    var edit_date_arrival = document.getElementById('edit_date_arrival'+pat_id).value;
+    var edit_date_contact = document.getElementById('edit_date_contact'+pat_id).value;
+    var edit_unknown_person = document.getElementById('edit_unknown_person'+pat_id).value;
+    var edit_positive_patients = document.getElementById('edit_positive_patients'+pat_id).value;
+    var edit_doc_visited = document.getElementById('edit_doc_visited'+pat_id).value;
+    var edit_tested_cov = document.getElementById('edit_tested_cov'+pat_id).value;
+    //alert (hidden_id);
+                    //console.log(form_data);
+                    $.ajax({
+                        type: "POST",
+                        url: "<?= base_url("update_travel_details") ?>",
+                        data: {hidden_trav_id: hidden_trav_id,edit_visited:edit_visited, edit_country_of_visit:edit_country_of_visit, edit_date_arrival:edit_date_arrival, edit_date_contact:edit_date_contact, edit_unknown_person:edit_unknown_person, edit_positive_patients:edit_positive_patients,edit_doc_visited:edit_doc_visited,edit_tested_cov:edit_tested_cov},
+                        success: function (success) {
+                            success = JSON.parse(success);
+                            if (success.status === true) {
+
+                                toastr.success(success.body);
+                               load_user_details(pat_name);
+                            } else {
+
+                                toastr.error(success.body);
+                                load_user_details(pat_name);
+                            }
+                        },
+                        error: function (error) {
+
+                            toastr.error("something went to wrong");
+load_user_details(pat_name);
+                        }
+                    });
+    
+    }
+    function Save_testing(pat_id){
+    var pat_name = document.getElementById('search').value;
+   // alert(pat_name);
+ 
+    var hidden_testing_id = document.getElementById('hidden_testing_id'+pat_id).value;
+    var edit_rapid_testing = document.getElementById('edit_rapid_testing'+pat_id).value;
+    var edit_cbc = document.getElementById('edit_cbc'+pat_id).value;
+    var edit_xray = document.getElementById('edit_xray'+pat_id).value;
+    var edit_ct_scan = document.getElementById('edit_ct_scan'+pat_id).value;
+    var edit_ECG = document.getElementById('edit_ECG'+pat_id).value;
+    //alert (hidden_id);
+                    //console.log(form_data);
+                    $.ajax({
+                        type: "POST",
+                        url: "<?= base_url("update_testing_details") ?>",
+                        data: {hidden_testing_id: hidden_testing_id,edit_rapid_testing:edit_rapid_testing, edit_cbc:edit_cbc, edit_xray:edit_xray, edit_ct_scan:edit_ct_scan, edit_ECG:edit_ECG},
+                        success: function (success) {
+                            success = JSON.parse(success);
+                            if (success.status === true) {
+
+                                toastr.success(success.body);
+                               load_user_details(pat_name);
+                            } else {
+
+                                toastr.error(success.body);
+                                load_user_details(pat_name);
+                            }
+                        },
+                        error: function (error) {
+
+                            toastr.error("something went to wrong");
+load_user_details(pat_name);
+                        }
+                    });
+    
+    }
+    function Save_symptoms(pat_id){
+    var pat_name = document.getElementById('search').value;
+
+    var hidden_symptoms_id = document.getElementById('hidden_symptoms_id'+pat_id).value;
+    var edit_yes = document.getElementById('edit_yes'+pat_id).value;
+    var edit_sys = document.getElementById('edit_sys'+pat_id).value;
+    var edit_date_start = document.getElementById('edit_date_start'+pat_id).value;
+    var edit_admitted = document.getElementById('edit_admitted'+pat_id).value;
+    var edit_sample_collection = document.getElementById('edit_sample_collection'+pat_id).value;
+    var edit_res_sample = document.getElementById('edit_res_sample'+pat_id).value;
+    var edit_health_status = document.getElementById('edit_health_status'+pat_id).value;
+    //alert (hidden_id);
+                    //console.log(form_data);
+                    $.ajax({
+                        type: "POST",
+                        url: "<?= base_url("update_symptoms_details") ?>",
+                        data: {hidden_symptoms_id: hidden_symptoms_id,edit_yes:edit_yes, edit_sys:edit_sys, edit_date_start:edit_date_start, edit_admitted:edit_admitted, edit_sample_collection:edit_sample_collection, edit_res_sample:edit_res_sample,edit_health_status:edit_health_status},
+                        success: function (success) {
+                            success = JSON.parse(success);
+                            if (success.status === true) {
+
+                                toastr.success(success.body);
+                               load_user_details(pat_name);
+                            } else {
+
+                                toastr.error(success.body);
+                                load_user_details(pat_name);
+                            }
+                        },
+                        error: function (error) {
+
+                            toastr.error("something went to wrong");
+load_user_details(pat_name);
+                        }
+                    });
+    
+    }
+    function Save_treatment(pat_id){
+    var pat_name = document.getElementById('search').value;
+   // alert(pat_name);
+    
+    var hidden_testing_id = document.getElementById('hidden_testing_id'+pat_id).value;
+    var edit_HCQS = document.getElementById('edit_HCQS'+pat_id).value;
+    var edit_azythromycine = document.getElementById('edit_azythromycine'+pat_id).value;
+    var edit_vitamin_c = document.getElementById('edit_vitamin_c'+pat_id).value;
+    var edit_retro_viral = document.getElementById('edit_retro_viral'+pat_id).value;
+    var edit_others = document.getElementById('edit_others'+pat_id).value;
+    //alert (hidden_id);
+                    //console.log(form_data);
+                    $.ajax({
+                        type: "POST",
+                        url: "<?= base_url("update_treatment_details") ?>",
+                        data: {hidden_testing_id: hidden_testing_id,edit_HCQS:edit_HCQS, edit_azythromycine:edit_azythromycine, edit_vitamin_c:edit_vitamin_c, edit_retro_viral:edit_retro_viral, edit_others:edit_others},
+                        success: function (success) {
+                            success = JSON.parse(success);
+                            if (success.status === true) {
+
+                                toastr.success(success.body);
+                               load_user_details(pat_name);
+                            } else {
+
+                                toastr.error(success.body);
+                                load_user_details(pat_name);
+                            }
+                        },
+                        error: function (error) {
+
+                            toastr.error("something went to wrong");
+load_user_details(pat_name);
+                        }
+                    });
+    
+    }
+    function Save_others(pat_id){
+    var pat_name = document.getElementById('search').value;
+   // alert(pat_name);
+    var hidden_other_id = document.getElementById('hidden_other_id'+pat_id).value;
+    var edit_remarks = document.getElementById('edit_remarks'+pat_id).value;
+    var edit_ward = document.getElementById('edit_ward'+pat_id).value;
+    var edit_recovered = document.getElementById('edit_recovered'+pat_id).value;
+    var edit_discharge_date = document.getElementById('edit_discharge_date'+pat_id).value;
+    var edit_death = document.getElementById('edit_death'+pat_id).value;
+    var edit_Patient_image = document.getElementById('edit_Patient_image'+pat_id).value;
+    var edit_Patient_file = document.getElementById('edit_Patient_file'+pat_id).value;
+    //alert (hidden_id);
+                    //console.log(form_data);
+                    $.ajax({
+                        type: "POST",
+                        url: "<?= base_url("update_other_details") ?>",
+                        data: {hidden_other_id: hidden_other_id,edit_remarks:edit_remarks, edit_ward:edit_ward, edit_recovered:edit_recovered, edit_discharge_date:edit_discharge_date, edit_death:edit_death, edit_Patient_image:edit_Patient_image,edit_Patient_file:edit_Patient_file},
+                        success: function (success) {
+                            success = JSON.parse(success);
+                            if (success.status === true) {
+
+                                toastr.success(success.body);
+                               load_user_details(pat_name);
+                            } else {
+
+                                toastr.error(success.body);
+                                load_user_details(pat_name);
+                            }
+                        },
+                        error: function (error) {
+
+                            toastr.error("something went to wrong");
+load_user_details(pat_name);
+                        }
+                    });
+    
     }
           
         </script>

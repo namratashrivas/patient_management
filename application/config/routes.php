@@ -62,6 +62,18 @@ $route["get_all_testing_details"] = "Welcome/get_all_testing_details";
 $route["get_all_symptoms_details"] = "Welcome/get_all_symptoms_details";
 $route["get_all_treatment_details"] = "Welcome/get_all_treatment_details";
 $route["get_all_other_details"] = "Welcome/get_all_other_details";
+$route["change_user_details"] = "Welcome/change_user_details";
+$route["change_travel_details"] = "Welcome/change_travel_details2";
+$route["change_testing_details"] = "Welcome/change_testing_details";
+$route["change_symptoms_details"] = "Welcome/change_symptoms_details";
+$route["change_treatment_details"] = "Welcome/change_treatment_details";
+$route["change_other_details"] = "Welcome/change_other_details";
+$route["update_user_details"] = "Welcome/update_user_details";
+$route["update_travel_details"] = "Welcome/update_travel_details";
+$route["update_testing_details"] = "Welcome/update_testing_details";
+$route["update_symptoms_details"] = "Welcome/update_symptoms_details";
+$route["update_treatment_details"] = "Welcome/update_treatment_details";
+$route["update_other_details"] = "Welcome/update_other_details";
 $route["ExcelFile"] = "ExcelController";
 
 
