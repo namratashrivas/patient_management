@@ -25,6 +25,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             color:red;
         }
 
+<<<<<<< HEAD
+=======
+        }
+        .form-control {
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 1px);
+        }
+        
+>>>>>>> origin/master
     </style>
 
     <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
