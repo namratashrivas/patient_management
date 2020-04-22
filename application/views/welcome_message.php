@@ -31,8 +31,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="wrapper">
             <!-- Navbar -->
             <nav class="mainheader navbar navbar-expand navbar-white navbar-light">
-                <h2>COVID -19</h2>
-            </nav>
+                <h2>COVID -19
+                    <small >3</small></h2>
+            
             <!-- /.navbar -->
 <ul class="navbar-nav ml-auto">
                         <li class="nav-item  pl-3">
@@ -46,7 +47,37 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </li>
 
                     </ul>
+</nav>
+<div class="modal modal-blur fade" id="modalsimple" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <form class="" id="login_form">
+                            <div class="modal-body">
 
+
+                                <div class="form-row">
+                                    <div class="col-md-12">
+                                        <div class="position-relative form-group">
+                                            <input name="username" id="username" placeholder="Email" type="email" class="mb-2 form-control-sm form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="position-relative form-group">
+                                            <input name="password" id="password" placeholder="Password" type="password" class="mb-2 form-control-sm form-control">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary mr-auto" data-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-primary" >Login</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper" style=" margin-left: 0px;    margin-top: 1px;">
                 <!-- Content Header (Page header) -->
@@ -698,6 +729,43 @@ function load_data(insert_id){
                     },
                 });
 }
+$("#login_form").validate({
+                    rules: {
+                        username: {required: true},
+                        password: {required: true}
+                    },
+                    messages: {
+                        username: {required: "Enter Username"},
+                        password: {required: "Enter Password "}
+                    },
+                    errorElement: 'span',
+                    submitHandler: function (form) {
+                        var form_id = document.getElementById('login_form');
+                        $.ajax({
+                            url: '<?= base_url('login_validation') ?>',
+                            type: "POST",
+                            data: new FormData(form_id),
+                            contentType: false,
+                            cache: false,
+                            processData: false,
+                            success: function (success) {
+                                success = JSON.parse(success);
+                                if (success.status === 200) {
+
+                                    $(location).attr('href', '<?= base_url() ?>');
+
+                                } else {
+                                    toastr.error(success.body);//exampleEmail-error
+                                }
+                            },
+                            error: function (error) {
+                                toastr.error(error.body);
+                                console.log(error);
+                            }
+                        });
+
+                    }
+                });
             $("#other_details").validate({
                 rules: {
                     other_pat_id: {required: true},

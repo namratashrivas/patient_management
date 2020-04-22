@@ -14,7 +14,36 @@ class user_model extends CI_Model {
             return false;
         }
     }
+public function login($username, $password) {
 
+        try {
+            
+                $where = array("username" => $username);
+            
+            $user_details = $this->db->select(array("username", "password", "tab_access ","id"))->where($where)->get('user_login')->row();
+            if (is_null($user_details)) {
+                $data["status"] = 201;
+                $data["body"] = "Invalid username";
+                return $data;
+            } else {
+                if ($user_details->password != $password) {
+                    $data["status"] = 202;
+                    $data["body"] = "Incorrect Password";
+                    return $data;
+                } else {
+                        $data["status"] = 200;
+                        $data["body"] = $user_details;
+                        return $data;
+                    
+                }
+            }
+        } catch (Exception $exc) {
+            log_message('error', $exc->getMessage());
+            $data["status"] = 204;
+            $data["body"] = $exc->getMessage();
+            return $data;
+        }
+    }
     public function LoadTravel($data, $where_data) {
         $this->db->select('user_travel_history.Patient_ID,user_travel_history.Visited, user_travel_history.Country_of_Visit, user_travel_history.Date_of_arrival, user_travel_history.Date_of_contact, user_travel_history.unknown_contact, user_travel_history.place_of_contact, user_travel_history.doctors_visited, user_travel_history.Result,
 (SELECT user_profile.Name FROM user_profile WHERE user_profile.Patient_ID=user_travel_history.Patient_ID) AS Name');
