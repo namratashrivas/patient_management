@@ -34,7 +34,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <h2>COVID -19</h2>
             </nav>
             <!-- /.navbar -->
+<ul class="navbar-nav ml-auto">
+                        <li class="nav-item  pl-3">
+                            <?php if (!is_null($this->session->user_session)) { ?>
+                                <a href="<?= base_url('logout') ?>" class="btn btn-secondary" >Logout
+                                </a>
+                            <?php } else { ?>  <a href="#" class="btn btn-secondary" data-toggle="modal" data-target="#modalsimple">
+                                    Login
+                                </a>
+                            <?php } ?>
+                        </li>
 
+                    </ul>
 
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper" style=" margin-left: 0px;    margin-top: 1px;">
@@ -44,7 +55,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="row mb-2">
                             <div class="col-sm-6">                                
                                 <div class="col-md-12">
-                                   <input class="form-control" id="search" name="search" type="search" style="width: 300px; height: 50px" placeholder="Search Patient By Name" aria-label="Search">
+                                    <input class="form-control" list="search_patient" id="search" name="search"  style="width: 300px; height: 50px" onkeydown="fetch_all_patient()" onkeyup="fetch_all_patient()" oninput="fetch_all_patient()" onfocus="fetch_all_patient()" onclick="fetch_all_patient()" onchange="fetch_all_patient()" onkeypress="fetch_all_patient()"  placeholder="Search Patient By Name" aria-label="Search">
+                                    <datalist id="search_patient" name="search_patient"></datalist>
                                 </div>                                 
                             </div>
                         </div>
@@ -534,7 +546,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </div>
                             <div class="form-control"><label>Testing Report</label></div>
                             <div id="testing_details_table" >
-                                <!--<table class="table table-sm" id="testing_details_table"></table> -->
+                                <table class="table table-sm" id="testing_details_table"></table> 
                             </div>
                             <div class="form-control"><label>Symptoms </label></div>
                             <div id="symptoms_details" >
@@ -597,7 +609,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 });
                 
             });
+function fetch_all_patient() {
+        
+        $.ajax({
+            type: "post",
+            url: "<?= base_url('search_patient') ?>",
+            dataType: "json",
+            success: function (result) {
+                if (result.status == 200) {
+                    $('#search_patient').empty();
+                    $('#search_patient').append(result.body);
+                } else {
 
+                }
+            },
+            error: function (error) {
+
+            }
+        });
+    }
   function show_travel_collapse(){
    // alert();
      $("#travel_collapse").css("display", "block");

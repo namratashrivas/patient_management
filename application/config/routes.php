@@ -75,6 +75,7 @@ $route["update_symptoms_details"] = "Welcome/update_symptoms_details";
 $route["update_treatment_details"] = "Welcome/update_treatment_details";
 $route["update_other_details"] = "Welcome/update_other_details";
 $route["ExcelFile"] = "ExcelController";
+$route["search_patient"] = "File_uploadation/search_patient";
 
 
 

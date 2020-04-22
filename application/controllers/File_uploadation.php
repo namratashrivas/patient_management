@@ -11,44 +11,7 @@ class File_uploadation extends CI_Controller {
     public function index() {
     }
     
-    public function get_all_data() { //done by pooja
-        if (!is_null($this->input->post_get("search"))) {
-            $search = $this->input->post_get("search");
-        } else {
-            $search = "";
-        }
-        $customer_id = $this->input->post_get("customer_id");
-        $year_id = $this->input->post_get("year_id");
-        $status = $this->input->post_get("status");
-        if ($customer_id == '' && $year_id == '') {
-            $array = array("firm_id" => $firm_id, "repetition_type" => 0);
-        } else if ($customer_id !== '' && $year_id == '') {
-            $array = array("firm_id" => $firm_id, "customer_id" => $customer_id, "repetition_type" => 0);
-        } else if ($customer_id == '' && $year_id !== '') {
-            $array = array("firm_id" => $firm_id, "YEAR(planning_start_date)" => $year_id, "repetition_type" => 0);
-        } else {
-            $array = array("firm_id" => $firm_id, "YEAR(planning_start_date)" => $year_id, "customer_id" => $customer_id, "repetition_type" => 0);
-        }
-
-        $data = $row = array();
-        $memData = $this->Project_model->getRows($_POST, $array, array("plan_id",
-            "(select customer_master_data.customer_name from customer_master_data where task_planning_all.customer_id=customer_master_data.customer_id) as customer_name", "plan_name", "plan_description", "plan_identifier_name", "planning_start_date",
-            "status", "enquiry_id", "firm_id", "create_on", "service_id", "denied_reason", "frequency_on_date", "frequency_on_month", "(select group_concat(planning_id) from task_scheduling_all where planning_id=plan_id) as planning_id"));
-        foreach ($memData as $item) {
-            $data[] = array($item->plan_id, $item->plan_name, $item->plan_identifier_name, $item->customer_name, $item->plan_description, date_format(date_create($item->create_on), "d-M-Y"),
-                date_format(date_create($item->planning_start_date), "d-M-Y"), $item->enquiry_id,
-                $item->service_id, $item->denied_reason, $item->status, $item->planning_id, $item->frequency_on_date, $item->frequency_on_month);
-        }
-//        echo $this->db->last_query();
-        $output = array(
-            "query" => $this->db->last_query(),
-            "draw" => $_POST['draw'],
-            "recordsTotal" => $this->Project_model->countAll(),
-            "recordsFiltered" => $this->Project_model->countFiltered($_POST),
-            "data" => $data,
-        );
-        echo json_encode($output);
-    }
+    
     
     public function insert_treatment() {
       $Patient_ID  = $this->input->post_get("treatment_pat_id");
@@ -126,6 +89,24 @@ $death=$this->input->post_get("death");
                     $response["body"] = "Failed To Upload file";
                 }
                         echo json_encode($response);
+    }
+
+    public function search_patient() {
+        
+            $result = $this->File_modal->search_patient();
+            $displayString = '';
+            if ($result != false) {
+                foreach ($result as $patientData) {
+                    $displayString .= '<option>' . $patientData->Name . '</option>';
+                }
+                $response["status"] = 200;
+                $response["body"] = $displayString;
+            } else {
+                $response["status"] = 201;
+                $response["body"] = "No patient found";
+            }
+       
+        echo json_encode($response);
     }
     public function get_patient() {
          $insert_id=$this->input->post_get("insert_id");
