@@ -53,10 +53,13 @@ class File_modal extends CI_Model {
             return '1';
         }
     }
-		
-		 function upload_file($upload_path,$id_name) {
+        
+         function upload_file($upload_path,$id_name) {
         $img_id = $id_name."_". $this->generate_img_id();
+        //echo $img_id;
+        
         if (isset($_FILES[$id_name]) && $_FILES[$id_name]['error'] != '4') {
+            
             $files = $_FILES;
             if (is_array($_FILES[$id_name]['name'])) {
                 $count = count($_FILES[$id_name]['name']); // count element
