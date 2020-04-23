@@ -15,7 +15,7 @@ class Login extends CI_Controller {
 
     function __construct() {
         parent::__construct();
-        $this->load->model('User_Model');
+        $this->load->model('User_model');
     }
 
     public function login_validation() {
@@ -24,7 +24,7 @@ class Login extends CI_Controller {
 
         if (!is_null($username) && !is_null($password)) {
 
-            $resultData = $this->User_Model->login($username, $password);
+            $resultData = $this->User_model->login($username, $password);
             if ($resultData["status"] == 200) {
                 $this->session->user_session = $resultData["body"];
 
