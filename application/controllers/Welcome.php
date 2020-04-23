@@ -433,7 +433,7 @@ public function change_user_details() { //done by pooja lote
         foreach ($result as $row) {
          $data .= '<input type="hidden" id="hidden_trav_id'.$row->Patient_ID.'" name="hidden_trav_id'.$row->Patient_ID.'" value="'.$row->Patient_ID.'"> 
           <div class="form-group">
-            <label for="Patient Name">'.$i++.'.Patient Name</label><input type="text" value="'.$row->Name.'"  class="form-control " placeholder="Enter Visited Place" readonly >   </div> 
+            <label for="Patient Name">'.$i++.'.&nbsp;Patient Name</label><input type="text" value="'.$row->Name.'"  class="form-control " placeholder="Enter Visited Place" readonly >   </div> 
          <div class="form-group">
             <label for="Visited">Visited</label>
            <input type="text" value="'.$row->Visited.'" name="edit_visited'.$row->Patient_ID.'" class="form-control " id="edit_visited'.$row->Patient_ID.'" placeholder="Enter Visited Place" >                                          
@@ -676,7 +676,7 @@ public function update_user_details() {
          $data .= '<tbody id="user_'.$row->Patient_ID.'"><tr>
          <td>'.$i++.'.</td>
          <td><strong>Name</strong></td>
-         <td>'.$row->Name.'</td>
+         <td>'.$row->Patient_ID.'_'.$row->Name.'</td>
          </tr>
          <tr>
          <td></td>
@@ -754,8 +754,8 @@ echo $this->db->last_query();
         $data .= '<tbody id="travel_'.$row->Patient_ID.'">
         <tr>
         <td>'.$i++.'.</td>
-        <td><strong>Patient Name</strong></td>
-        <td>'.$row->Name.'</td>
+        <td><strong>&nbsp;Patient Name</strong></td>
+        <td>'.$row->Patient_ID.'_'.$row->Name.'</td>
         </tr><tr>
         <td></td>
         <td><strong>Visited</strong></td>
@@ -769,12 +769,12 @@ echo $this->db->last_query();
         <tr>
         <td></td>
         <td><strong>Date of arrival from Affected Country</strong></td>
-        <td>'.$row->Date_of_arrival.'</td>
+        <td>'.date("d/m/Y",strtotime($row->Date_of_arrival)).'</td>
         </tr>
         <tr>
         <td></td>
         <td><strong>Date of contact with person arrived from abroad</strong></td>
-        <td>'.$row->Date_of_contact.'</td>
+        <td>'.date("d/m/Y",strtotime($row->Date_of_contact)).'</td>
         </tr>
         <tr>
         <td></td>
@@ -844,7 +844,7 @@ $where_for_loop_data .="Patient_ID =".$array_pat[$i]. " OR ";
         $data .= '<tbody id="testing_'.$row->Patient_ID.'"><tr>
         <td>'.$i++.'.</td>
         <td><strong>Patient Name</strong></td>
-        <td>'.$row->Name.'</td>
+        <td>'.$row->Patient_ID.'_'.$row->Name.'</td>
         </tr><tr>
         <td></td>
         <td><strong>Rapid Testing</strong></td>
@@ -918,7 +918,7 @@ $where_for_loop_data .="Patient_ID =".$array_pat[$i]. " OR ";
         $data .= '<tbody id="symptoms_'.$row->Patient_ID.'"><tr>
         <td>'.$i++.'.</td>
         <td><strong>Patient Name</strong></td>
-        <td>'.$row->Name.'</td>
+        <td>'.$row->Patient_ID.'_'.$row->Name.'</td>
         </tr><tr>
         <td></td>
         <td><strong>Symptoms Seen</strong></td>
@@ -932,7 +932,7 @@ $where_for_loop_data .="Patient_ID =".$array_pat[$i]. " OR ";
         <tr>
         <td></td>
         <td><strong>Date of starting of symptoms</strong></td>
-        <td>'.$row->date_of_starting_of_symptoms.'</td>
+        <td>'.date("d/m/Y", strtotime($row->date_of_starting_of_symptoms)).'</td>
         </tr>
         <tr>
         <td></td>
@@ -942,7 +942,7 @@ $where_for_loop_data .="Patient_ID =".$array_pat[$i]. " OR ";
         <tr>
         <td></td>
         <td><strong>Date of sample collection (second)</strong></td>
-        <td>'.$row->date_of_sample_collection.'</td>
+        <td>'.date("d/m/Y",strtotime($row->date_of_sample_collection)).'</td>
         </tr>
         <tr>
         <td></td>
@@ -1000,7 +1000,7 @@ $where_for_loop_data .="Patient_ID =".$array_pat[$i]. " OR ";
         $data .= '<tbody id="treatment_'.$row->Patient_ID.'"><tr>
         <td>'.$i++.'.</td>
         <td><strong>Patient Name</strong></td>
-        <td>'.$row->Name.'</td>
+        <td>'.$row->Patient_ID.'_'.$row->Name.'</td>
         </tr><tr>
         <td></td>
         <td><strong>HCQS</strong></td>
@@ -1072,7 +1072,7 @@ $where_for_loop_data .="Patient_ID =".$array_pat[$i]. " OR ";
         $data .= '<tbody id="other_'.$row->Patient_ID.'"><tr>
         <td>'.$i++.'.</td>
         <td><strong>Patient Name</strong></td>
-        <td>'.$row->Name.'</td>
+        <td>'.$row->Patient_ID.'_'.$row->Name.'</td>
         </tr><tr>
         <td></td>
         <td><strong>Remarks</strong></td>
@@ -1091,7 +1091,7 @@ $where_for_loop_data .="Patient_ID =".$array_pat[$i]. " OR ";
         <tr>
         <td></td>
         <td><strong>DISCHARGE DATE</strong></td>
-        <td>'.$row->DISCHARGE_DATE.'</td>
+        <td>'.date("d/m/Y",strtotime($row->DISCHARGE_DATE)).'</td>
         </tr>
         <tr>
         <td></td>
