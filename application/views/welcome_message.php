@@ -28,56 +28,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </style>
 
     <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+            <?php if (!is_null($this->session->user_session)) { ?>
         <div class="wrapper">
             <!-- Navbar -->
             <nav class="mainheader navbar navbar-expand navbar-white navbar-light">
                 <h2>COVID -19
-                    <em style="font-size:19px;"><?php if (!is_null($this->session->user_session)) { echo $this->session->user_session->username; } else { }?></em></h2>
+                    <em style="font-size:19px;"><?php echo $this->session->user_session->username; ?></em></h2>
             
             <!-- /.navbar -->
 <ul class="navbar-nav ml-auto">
                         <li class="nav-item  pl-3">
-                            <?php if (!is_null($this->session->user_session)) { ?>
+                      
                                 <a href="<?= base_url('logout') ?>" class="btn btn-secondary" >Logout
                                 </a>
-                            <?php } else { ?>  <a href="#" class="btn btn-secondary" data-toggle="modal" data-target="#modalsimple">
-                                    Login
-                                </a>
-                            <?php } ?>
+                            
                         </li>
 
                     </ul>
 </nav>
-<div class="modal modal-blur fade" id="modalsimple" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <form class="" id="login_form">
-                            <div class="modal-body">
 
-
-                                <div class="form-row">
-                                    <div class="col-md-12">
-                                        <div class="position-relative form-group">
-                                            <input name="username" id="username" placeholder="Email" type="email" class="mb-2 form-control-sm form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="position-relative form-group">
-                                            <input name="password" id="password" placeholder="Password" type="password" class="mb-2 form-control-sm form-control">
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary mr-auto" data-dismiss="modal">Cancel</button>
-                                <button type="submit" class="btn btn-primary" >Login</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+    
+                               
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper" style=" margin-left: 0px;    margin-top: 1px;">
                 <!-- Content Header (Page header) -->
@@ -86,7 +57,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="row mb-2">
                             <div class="col-sm-6">                                
                                 <div class="col-md-12">
-                                    <input class="form-control" list="search_patient" id="search" name="search"  style="width: 300px; height: 50px" onkeydown="fetch_all_patient()" onkeyup="fetch_all_patient()" oninput="fetch_all_patient()" onfocus="fetch_all_patient()" onclick="fetch_all_patient()" onchange="fetch_all_patient()" onkeypress="fetch_all_patient()"  placeholder="Search Patient By Name" aria-label="Search">
+                                    <input class="form-control" list="search_patient" id="search" name="search"  style="width: 300px; height: 50px" placeholder="Search Patient By Name" aria-label="Search">
                                     <datalist id="search_patient" name="search_patient"></datalist>
                                 </div>                                 
                             </div>
@@ -99,7 +70,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                                     </td>
                                     <td>
-                                                                        <button type="button" id="view_button" value="" onclick="hide_form(),load_user_details()" name="view_button" style="display:block" class="btn btn-primary">View All</button>
+                                                                        <button type="button" id="view_button" value="" onclick="hide_form(),load_user_details()" name="view_button" style="display:block" class="btn btn-primary">View</button>
 
                                     </td>
                                     <td>
@@ -572,8 +543,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 
                             </div>
                             <div class="form-control"><label> Travel History </label></div>
-                            <div id="travel_details_table" >
-                                <!--<table class="table table-sm" id="travel_details_table"></table>-->
+                            <div id="travel_details" >
+                                <table class="table table-sm" id="travel_details_table"></table>
                             </div>
                             <div class="form-control"><label>Testing Report</label></div>
                             <div id="testing_details" >
@@ -596,7 +567,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </section>
                 <!-- /.content -->
             </div>
-            <!-- /.content-wrapper -->
+
+                            <!-- /.content-wrapper -->
 
             <!-- Control Sidebar -->
             <!--  <aside class="control-sidebar control-sidebar-dark">
@@ -607,7 +579,53 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <!-- Main Footer -->
 
         </div>
-        <!-- ./wrapper -->
+        <!-- ./wrapper --> <?php } else { ?>
+        <div class="hold-transition login-page">
+<div class="login-box">
+  <div class="login-logo">
+    <b>COVID</b>-19
+  </div>
+  <!-- /.login-logo -->
+  <div class="card">
+    <div class="card-body login-card-body">
+      <p class="login-box-msg">Sign in to start your session</p>
+
+      <form class="" id="login_form">
+        <div class="input-group mb-3">
+          <input name="username" id="username" type="email" class="form-control" placeholder="Email">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-envelope"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input  name="password" id="password" type="password" class="form-control" placeholder="Password">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          
+          <!-- /.col -->
+          <div class="col-4">
+            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
+
+    </div>
+    <!-- /.login-card-body -->
+  </div>
+</div>
+
+</div>
+                            
+<?php                           } ?>
+           
 
         <!-- REQUIRED SCRIPTS -->
         <!-- jQuery -->
@@ -627,9 +645,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <script>
             $(document).ready(function () {
                 $("#tab_view_div").hide();
-// var pat_name = "";
-
-// load_user_details(pat_name);
+fetch_all_patient();
 
                 $('input[type="radio"]').click(function () {
                     if ($(this).attr('id') == 'yes') {
@@ -808,6 +824,7 @@ $("#login_form").validate({
                                 //                                              $('#file_uploading').hide();
 
                                 $("#other_details").trigger("reset");
+                                window.location.reload();
                             } else {
 
                                 toastr.error(success.body);
@@ -1558,6 +1575,12 @@ load_user_details(pat_name);
                         type: "POST",
                         url: "<?= base_url("update_other_details") ?>",
                         data: {hidden_other_id: hidden_other_id,edit_remarks:edit_remarks, edit_ward:edit_ward, edit_recovered:edit_recovered, edit_discharge_date:edit_discharge_date, edit_death:edit_death, edit_Patient_image:edit_Patient_image,edit_Patient_file:edit_Patient_file},
+                        
+                        contentType: false,
+                        cache: false,
+                        processData: false,
+                        async: false,
+                        cache: false,
                         success: function (success) {
                             success = JSON.parse(success);
                             if (success.status === true) {
