@@ -6,8 +6,8 @@ class Welcome extends CI_Controller {
   public function __construct() {
     parent::__construct();
     $this->load->model('User_model');
-
-  }
+    $this->load->model('File_modal');
+}
   public function index()
   {
     $user_detals = '2';
@@ -235,11 +235,13 @@ public function change_user_details() { //done by pooja lote
        if ($result != false) {
         $i = 1;
         foreach ($result as $row) {
-         $data .= '<input type="hidden" id="hidden_symptoms_id'.$row->Patient_ID.'" name="hidden_symptoms_id'.$row->Patient_ID.'" value="'.$row->Patient_ID.'"> <div class="form-group">
+             
+         $data .= '<form role="form" id="edit_symptoms_form'.$row->Patient_ID.'" class="form-horizontal" name="edit_symptoms_form'.$row->Patient_ID.'" novalidate="novalidate">
+         <div class="form-group">
             <label for="Patient Name">'.$i++.'.Patient Name</label><input type="text" value="'.$row->Name.'"  class="form-control " readonly >   </div> 
-                                                     <div class="form-group" style="margin-bottom:unset !important;">
+                                                     <div class="formgroup" style="margin-bottom:unset !important;">
                                                         <label for=" symptoms ">Symptoms:  
-                                                            <input type="radio" id="edit_yes'.$row->Patient_ID.'" name="edit_yes'.$row->Patient_ID.'" value="yes">&nbsp;<label for="male">Yes</label>&nbsp;&nbsp;<input type="radio" id="edit_no'.$row->Patient_ID.'" name="edit_yes'.$row->Patient_ID.'" value="no" checked="">&nbsp;<label for="female">No</label>          
+                                                            <input onclick="show_div(\'' . $row->Patient_ID . '\')" type="radio" id="edit_yes'.$row->Patient_ID.'" name="edit_yes'.$row->Patient_ID.'" value="yes">&nbsp;<label for="male">Yes</label>&nbsp;&nbsp;<input onclick="hide_div(\'' . $row->Patient_ID . '\')" type="radio" id="edit_no'.$row->Patient_ID.'" name="edit_yes'.$row->Patient_ID.'" value="no" checked="">&nbsp;<label for="female">No</label>          
                                                     </label>
                                                     </div> 
                                                     <div class="form-group" id="edit_myDIV'.$row->Patient_ID.'" style="display:none; ">
@@ -273,7 +275,7 @@ public function change_user_details() { //done by pooja lote
 
                                                     <div class="card-footer">
                                                         <button type="button" id="button_user" onclick="Save_symptoms(\'' . $row->Patient_ID . '\')" class="btn btn-primary">Save</button>
-                                                    </div>';
+                                                    </div></form>';
         $response['status'] = 200;
         $response['body'] = $data;
         
@@ -360,7 +362,9 @@ public function change_user_details() { //done by pooja lote
        if ($result != false) {
         $i = 1;
         foreach ($result as $row) {
-         $data .= '<input type="hidden" id="hidden_other_id'.$row->Patient_ID.'" name="hidden_other_id'.$row->Patient_ID.'" value="'.$row->Patient_ID.'"> <tr>
+         $data .= '<form role="form" id="edit_other_form'.$row->Patient_ID.'" class="form-horizontal" name="edit_other_form'.$row->Patient_ID.'" novalidate="novalidate">
+        <table class="table table-sm">
+        <tbody> <tr>
         <td>'.$i++.'.</td>
         <td><strong>Patient Name</strong></td>
         <td>'.$row->Name.'</td>
@@ -405,7 +409,7 @@ public function change_user_details() { //done by pooja lote
          <td>
                                                         <button type="button" id="button_user" onclick="Save_others(\'' . $row->Patient_ID . '\')" class="btn btn-primary">Save</button>
                                                     </td>
-         </tr>';
+         </tr></tbody></table></form>';
         $response['status'] = 200;
         $response['body'] = $data;
         
@@ -589,18 +593,25 @@ public function update_user_details() {
     }
 
       public function update_symptoms_details() {
-  $id = $this->input->post('hidden_symptoms_id');
-       $edit_yes= $this->input->post('edit_yes');
-   $edit_sys = $this->input->post('edit_sys');
-   $edit_date_start= $this->input->post('edit_date_start');
-   $edit_admitted = $this->input->post('edit_admitted');
-   $edit_sample_collection = $this->input->post('edit_sample_collection');
-   $edit_res_sample = $this->input->post('edit_res_sample');
-   $edit_health_status = $this->input->post('edit_health_status');
+       $id = $this->input->post('id'); 
+        
+       $edit_yes= $this->input->post('edit_yes'.$id);
+       if($edit_yes!='no'){
+ $edit_sys = $this->input->post('edit_sys'.$id);
+ $real_symptoms = implode(",", $edit_sys);
+  } else {
+     $real_symptoms = "";
+  }
+   
+   $edit_date_start= $this->input->post('edit_date_start'.$id);
+   $edit_admitted = $this->input->post('edit_admitted'.$id);
+   $edit_sample_collection = $this->input->post('edit_sample_collection'.$id);
+   $edit_res_sample = $this->input->post('edit_res_sample'.$id);
+   $edit_health_status = $this->input->post('edit_health_status'.$id);
 //             if(){}else{}
    // print_r($_POST);
    // exit();
-   $data_symptoms = array("Patient_ID"=>$id,"symptoms_seen"=>$edit_yes, "symptoms_name"=>$edit_sys,
+   $data_symptoms = array("Patient_ID"=>$id,"symptoms_seen"=>$edit_yes, "symptoms_name"=>$real_symptoms,
     "date_of_starting_of_symptoms"=>$edit_date_start,"quarantine_place"=>$edit_admitted,
     "date_of_sample_collection"=>$edit_sample_collection, "result_of_sample_collection"=>$edit_res_sample,"health_status"=>$edit_health_status
   );
@@ -639,16 +650,34 @@ public function update_user_details() {
     }
 
   public function update_other_details() {
-  $id = $this->input->post('hidden_other_id');
-       $edit_remarks= $this->input->post('edit_remarks');
-   $edit_ward = $this->input->post('edit_ward');
-   $edit_recovered= $this->input->post('edit_recovered');
-   $edit_discharge_date = $this->input->post('edit_discharge_date');
-   $edit_death = $this->input->post('edit_death');
-   $edit_Patient_image = $this->input->post('edit_Patient_image');
-   $edit_Patient_file = $this->input->post('edit_Patient_file');
+   $id = $this->input->post('id');
+   $edit_remarks= $this->input->post('edit_remarks'.$id);
+   $edit_ward = $this->input->post('edit_ward'.$id);
+   $edit_recovered= $this->input->post('edit_recovered'.$id);
+   $edit_discharge_date = $this->input->post('edit_discharge_date'.$id);
+   $edit_death = $this->input->post('edit_death'.$id);
+  $Patient_image_path = "uploads/";
+                 $Patient_file_path = "uploads/";
+        $Patient_image = $this->File_modal->upload_file($Patient_image_path,'edit_Patient_image'.$id);
+        $Patient_file = $this->File_modal->upload_file($Patient_file_path,'edit_Patient_file'.$id);
 
-   $data_others = array("Patient_ID"=>$id,"REMARK"=>$edit_remarks,"WARD"=>$edit_ward,"RECOVERED"=>$edit_recovered, "DISCHARGE_DATE"=>$edit_discharge_date, "PATIENT_DEATH"=>$edit_death,"Patient_image"=>$edit_Patient_image,"Patents_files"=>$edit_Patient_file);
+        if ($Patient_image["status"] == 200) {
+            $Patient_image_path .= $Patient_image["body"];
+            $Patient_imageDetails = $Patient_image_path;
+        } else {
+
+            $Patient_imageDetails = '';
+        }
+        if ($Patient_file["status"] == 200) {
+            $Patient_file_path .= $Patient_file["body"];
+            $Patient_fileDetails = $Patient_file_path;
+        } else {
+
+            $Patient_fileDetails = '';
+        }
+         
+
+   $data_others = array("Patient_ID"=>$id,"REMARK"=>$edit_remarks,"WARD"=>$edit_ward,"RECOVERED"=>$edit_recovered, "DISCHARGE_DATE"=>$edit_discharge_date, "PATIENT_DEATH"=>$edit_death,"Patient_image"=>$Patient_imageDetails,"Patents_files"=>$Patient_fileDetails);
    if ($this->User_model->update_other($data_others,$id)) {
     $response['profile'] = $data_others;
     $response["status"] = true;
@@ -915,7 +944,9 @@ $where_for_loop_data .="Patient_ID =".$array_pat[$i]. " OR ";
       $i = 1;
       foreach ($result as $row) {
        
-        $data .= '<tbody id="symptoms_'.$row->Patient_ID.'"><tr>
+        $data .= '<div id="symptoms_'.$row->Patient_ID.'">
+        <table class="table table-sm">
+        <tbody><tr>
         <td>'.$i++.'.</td>
         <td><strong>Patient Name</strong></td>
         <td>'.$row->Patient_ID.'_'.$row->Name.'</td>
@@ -961,7 +992,7 @@ $where_for_loop_data .="Patient_ID =".$array_pat[$i]. " OR ";
                                                         <button type="button" id="button_user" onclick="edit_symptoms(\'' . $row->Patient_ID . '\')" class="btn btn-primary">Edit</button>
                                                     </td>
          </tr>                   
-        </tbody>';
+        </tbody></table></div>';
         $response['status'] = 200;
         $response['body'] = $data;
         
@@ -1069,7 +1100,9 @@ $where_for_loop_data .="Patient_ID =".$array_pat[$i]. " OR ";
       $i = 1;
       foreach ($result as $row) {
        
-        $data .= '<tbody id="other_'.$row->Patient_ID.'"><tr>
+        $data .= '<div id="other_'.$row->Patient_ID.'">
+        <table class="table table-sm">
+        <tbody><tr>
         <td>'.$i++.'.</td>
         <td><strong>Patient Name</strong></td>
         <td>'.$row->Patient_ID.'_'.$row->Name.'</td>
@@ -1115,7 +1148,7 @@ $where_for_loop_data .="Patient_ID =".$array_pat[$i]. " OR ";
                                                         <button type="button" id="button_user" onclick="edit_other(\'' . $row->Patient_ID . '\')" class="btn btn-primary">Edit</button>
                                                     </td>
          </tr>                    
-        </tbody>';
+        </tbody></table></div>';
         $response['status'] = 200;
         $response['body'] = $data;
         

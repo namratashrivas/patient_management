@@ -551,16 +551,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <table class="table table-sm" id="testing_details_table"></table> 
                             </div>
                             <div class="form-control"><label>Symptoms </label></div>
-                            <div id="symptoms_details" >
-                                <table class="table table-sm" id="symptoms_details_table"></table>
+                            <div id="symptoms_details_table" >
+                                
                             </div>
                             <div class="form-control"><label>Treatment </label></div>
                             <div id="treatment_details" >
                                 <table class="table table-sm" id="treatment_details_table"></table>
                             </div>
                             <div class="form-control"><label>Other Details </label></div>
-                            <div id="others_details" >
-                                 <table class="table table-sm" id="others_details_table"></table>
+                            <div id="others_details_table" >
+                                 
                             </div>
                         </div>
                     </div><!--/. container-fluid -->
@@ -656,6 +656,12 @@ fetch_all_patient();
                 });
                 
             });
+            function show_div(pat_id){
+ $('#edit_myDIV'+pat_id).show();
+            }
+            function hide_div(pat_id){
+ $('#edit_myDIV'+pat_id).hide();
+            }
 function fetch_all_patient() {
         
         $.ajax({
@@ -1485,43 +1491,36 @@ load_user_details(pat_name);
                     });
     
     }
-    function Save_symptoms(pat_id){
-    var pat_name = document.getElementById('search').value;
-
-    var hidden_symptoms_id = document.getElementById('hidden_symptoms_id'+pat_id).value;
-    var edit_yes = document.getElementById('edit_yes'+pat_id).value;
-    var edit_sys = document.getElementById('edit_sys'+pat_id).value;
-    var edit_date_start = document.getElementById('edit_date_start'+pat_id).value;
-    var edit_admitted = document.getElementById('edit_admitted'+pat_id).value;
-    var edit_sample_collection = document.getElementById('edit_sample_collection'+pat_id).value;
-    var edit_res_sample = document.getElementById('edit_res_sample'+pat_id).value;
-    var edit_health_status = document.getElementById('edit_health_status'+pat_id).value;
-    //alert (hidden_id);
-                    //console.log(form_data);
-                    $.ajax({
-                        type: "POST",
-                        url: "<?= base_url("update_symptoms_details") ?>",
-                        data: {hidden_symptoms_id: hidden_symptoms_id,edit_yes:edit_yes, edit_sys:edit_sys, edit_date_start:edit_date_start, edit_admitted:edit_admitted, edit_sample_collection:edit_sample_collection, edit_res_sample:edit_res_sample,edit_health_status:edit_health_status},
-                        success: function (success) {
-                            success = JSON.parse(success);
-                            if (success.status === true) {
-
-                                toastr.success(success.body);
-                               load_user_details(pat_name);
-                            } else {
-
-                                toastr.error(success.body);
-                                load_user_details(pat_name);
-                            }
-                        },
-                        error: function (error) {
-
-                            toastr.error("something went to wrong");
-load_user_details(pat_name);
-                        }
-                    });
     
+    function Save_symptoms(pat_id){
+        var pat_name = document.getElementById('search').value;
+                
+        $.ajax({
+            url: '<?= base_url("update_symptoms_details") ?>',
+            type: "POST",
+            datatype: "JSON",
+            data: $("#edit_symptoms_form"+pat_id).serialize() + "&id=" + pat_id,
+            success: function (success) {
+                success = JSON.parse(success);
+                if (success.status === true) {
+
+                    toastr.success(success.body);
+                   load_user_details(pat_name);
+                } else {
+
+                    toastr.error(success.body);
+                    load_user_details(pat_name);
+                }
+            },
+            error: function (error) {
+                toastr.error("something went to wrong");
+                load_user_details(pat_name);
+            }
+
+                    });
     }
+
+    
     function Save_treatment(pat_id){
     var pat_name = document.getElementById('search').value;
    // alert(pat_name);
@@ -1558,24 +1557,17 @@ load_user_details(pat_name);
                     });
     
     }
+
     function Save_others(pat_id){
+
     var pat_name = document.getElementById('search').value;
-   // alert(pat_name);
-    var hidden_other_id = document.getElementById('hidden_other_id'+pat_id).value;
-    var edit_remarks = document.getElementById('edit_remarks'+pat_id).value;
-    var edit_ward = document.getElementById('edit_ward'+pat_id).value;
-    var edit_recovered = document.getElementById('edit_recovered'+pat_id).value;
-    var edit_discharge_date = document.getElementById('edit_discharge_date'+pat_id).value;
-    var edit_death = document.getElementById('edit_death'+pat_id).value;
-    var edit_Patient_image = document.getElementById('edit_Patient_image'+pat_id).value;
-    var edit_Patient_file = document.getElementById('edit_Patient_file'+pat_id).value;
-    //alert (hidden_id);
-                    //console.log(form_data);
+        var form_data = document.getElementById('edit_other_form'+pat_id);
+                    var fd = new FormData(form_data);
+                    fd.append("id", pat_id);
                     $.ajax({
                         type: "POST",
                         url: "<?= base_url("update_other_details") ?>",
-                        data: {hidden_other_id: hidden_other_id,edit_remarks:edit_remarks, edit_ward:edit_ward, edit_recovered:edit_recovered, edit_discharge_date:edit_discharge_date, edit_death:edit_death, edit_Patient_image:edit_Patient_image,edit_Patient_file:edit_Patient_file},
-                        
+                        data: fd,
                         contentType: false,
                         cache: false,
                         processData: false,
@@ -1589,19 +1581,19 @@ load_user_details(pat_name);
                                load_user_details(pat_name);
                             } else {
 
-                                toastr.error(success.body);
-                                load_user_details(pat_name);
+                               toastr.success(success.body);
+                               load_user_details(pat_name);
                             }
                         },
                         error: function (error) {
 
                             toastr.error("something went to wrong");
 load_user_details(pat_name);
+
                         }
                     });
-    
-    }
-          
+                }
+                       
         </script>
     </body>
 </html>
